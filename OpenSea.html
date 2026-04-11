@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenSea 2100 — Kevin Macario Gunawan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* VARIABLES & RESET */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ee;
+      --off: #e8e4de;
+      --muted: #9a9590;
+      --accent: #c8a97e;
+      --accent-dark: #8b6e4e;
+      --gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    body {
+      background: #ffffff; 
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+      background: var(--black);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      font-style: italic;
+    }
+    .back-btn {
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .back-btn:hover { color: var(--accent); }
+
+    .stacked-image-container {
+      position: relative;
+      width: 100%;
+      margin-bottom: 2rem; /* Jarak dengan elemen di bawahnya */
+    }
+
+    .stacked-image-container .layer-bawah {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .stacked-image-container .layer-atas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Memastikan gambar atas menyesuaikan bentuk tanpa gepeng */
+      z-index: 2; /* Memaksa layer ini berada di atas */
+    }
+
+    .magnify-wrapper {
+      overflow: hidden;
+      width: 100%;
+      margin-bottom: 2rem;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .magnify-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.1s ease-out; 
+      transform-origin: center center;
+    }
+
+    .magnify-wrapper:hover .magnify-image {
+      transform: scale(1.5);
+    }
+
+    .project-hero {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    
+    .project-hero img.bg-banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    /* GAYA UNTUK TULISAN DI TENGAH GAMBAR */
+    .hero-text-overlay {
+      position: relative;
+      z-index: 2; /* Teks di lapisan atas */
+      text-align: center;
+      color: #ffffff;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      text-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+    }
+    .hero-description {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 800px;
+      text-align: center;
+      opacity: 0.95;
+      text-shadow: 1px 2px 5px rgba(0,0,0,0.6);
+      margin-top: 25rem
+    }
+
+    .project-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      /* Box-shadow dan border-radius DIHAPUS agar gambar tidak kelihatan di-wrap kotak */
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 2rem);
+    }
+
+    /* PROJECT INFO */
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+      border-bottom: 1px solid var(--off);
+      padding-bottom: 3rem;
+    }
+    
+    .info-list { list-style: none; }
+    .info-item { margin-bottom: 2rem; }
+    .info-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.35rem;
+    }
+    .info-value { 
+      font-size: 0.95rem; 
+      font-weight: 400; 
+      color: #333;
+      line-height: 1.4;
+      display: block;
+    }
+    
+    .software-logos {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .software-logos img {
+      width: 36px; 
+      height: 36px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    /* SYNOPSIS RIGHT COLUMN */
+    .synopsis-block { margin-bottom: 1.5rem; }
+    .synopsis-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .synopsis-text { 
+      font-size: 0.95rem; 
+      color: #444; 
+      line-height: 1.6;
+    }
+    .synopsis-divider {
+      width: 50%;
+      height: 2px;
+      background-color: var(--off);
+      margin: 1.5rem 0;
+    }
+
+    /* CONTENT SECTIONS */
+    .section-block { margin-bottom: 6rem; }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--black);
+      display: inline-block;
+      padding-bottom: 0.25rem;
+    }
+
+    /* IMAGE PLACEHOLDERS */
+    .img-placeholder {
+      background: #f0f0f0;
+      border: 1px dashed #ccc;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+    .img-placeholder img { width: 100%; height: auto; display: block; }
+
+    /* ========================================= */
+    /* MOODBOARD STYLES */
+    /* ========================================= */
+    .moodboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 2rem; 
+    }    
+    
+    .moodboard-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .moodboard-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+
+    .moodboard-caption {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    .exploration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .exploration-grid {
+        grid-template-columns: 1fr; 
+      }
+    }
+
+    .character-showcase { margin-top: 2rem; }
+    .character-showcase .img-placeholder { aspect-ratio: 21/9; margin-bottom: 2rem; }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--off);
+      background: var(--white);
+    }
+    footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .project-header { grid-template-columns: 1fr; gap: 2rem; }
+      .moodboard-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">KMG.</a>
+    <a href="index.html" class="back-btn">← Back to Projects</a>
+  </nav>
+
+  <div class="project-hero">
+    <img src="Page 1/Z7vl90N6DGhtrpoZK6NrCKVtY.png.png" alt="OpenSea 2100 Banner" class="bg-banner">
+    
+    <div class="hero-text-overlay reveal">
+      <p class="hero-description">
+        A fictional world where unviable environments turn the remaining fish into humanity’s most 
+        precious resource. Special individuals (called Tidebreakers) sail toward the open sea in a relentless race and battle, with one clear objective: to catch fish.
+      </p>
+    </div>
+  </div>
+
+  <main class="container">
+    
+    <div class="project-header reveal">
+      
+      <ul class="info-list">
+        <li class="info-item">
+          <span class="info-label">Role</span>
+          <span class="info-value">Character Design<br>Environment Design<br>World Building</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Project Span</span>
+          <span class="info-value">1 Month</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Softwares</span>
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+            <img src="photoshop.jpg" alt="Adobe Photoshop">
+          </div>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Target Medium</span>
+          <span class="info-value">Video Games</span>
+        </li>
+      </ul>
+      
+      <div class="synopsis">
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Background</h2>
+          <p class="synopsis-text">
+            Open Sea 2100 is inspired by real-world maritime disputes and the ongoing tension over international waters (The High Seas), Open Sea 2100 imagines a future where the rules that govern the sea no longer exist. Nations compete not for territory, but for survival where the open sea becomes the new battlefield.
+          </p>
+        </div>
+        
+        <div class="synopsis-divider"></div>
+        
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Design Objective</h2>
+          <p class="synopsis-text">
+            To develop a complete and cohesive IP from the ground up, building a believable world with its own lore, rules, and visual identity. Every design decision, from characters to environments, is built to communicate the same universe consistently.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="section-block reveal">
+      <h2 class="section-title">Moodboard</h2>
+      <div class="moodboard-grid">
+        
+        <div class="moodboard-item">
+          <h3 class="moodboard-heading">Character</h3>
+            <img src="Page 1/Salinan dari Concept Illustration (18) 1.png" alt="Character Moodboard" class="project-img">
+          <p class="moodboard-caption">Tactical - Prideful - Cultural</p>
+        </div>
+
+        <div class="moodboard-item">
+          <h3 class="moodboard-heading">Technology & Environment</h3>
+            <img src="Page 1/Salinan dari Concept Illustration (19) 1.png" alt="Technology and Environment Moodboard" class="project-img">
+          <p class="moodboard-caption">Advanced - Adaptive - Mutation</p>
+        </div>
+
+        <div class="moodboard-item">
+          <h3 class="moodboard-heading">Color and Mood</h3>
+            <img src="Page 1/Salinan dari Concept Illustration (20) 1.png" alt="Color and Mood Moodboard" class="project-img">
+          <p class="moodboard-caption">Faded Tones - Soft Hues - Emphasizing</p>
+        </div>
+
+        <div class="moodboard-item">
+          <h3 class="moodboard-heading">Artstyle</h3>
+            <img src="Page 1/Salinan dari Concept Illustration (21) 1.png" alt="Artstyle Moodboard" class="project-img">
+          <p class="moodboard-caption">Stylized - Dynamic - Explaining</p>
+        </div>
+
+      </div>
+    </section>
+    <section class="section-block reveal">
+      <h2 class="section-title">Exploration</h2>
+      <div class="exploration-grid">
+        <img src="Page 1/Regergre → Lh1oqMW9rsgpjkhpgeUQlzFcA.png.png" alt="Exploration Sketches 1" class="project-img">
+        <img src="Page 1/Regergre → MfEJVXd1LDvaJLThGMUUXGp89A.png.png" alt="Exploration Sketches 2" class="project-img">
+      </div>
+    </section>
+
+    <section class="section-block reveal">
+      <h2 class="section-title">Character</h2>
+      <div class="character-showcase">
+        <img src="Page 1/Salinan dari Concept Illustration (2) → M1pYDlTTnWy7SAYVFyFzuKQv6M.png.png" alt="Character Sheet Lae" class="project-img" style="margin-bottom: 2rem;">
+        <img src="Page 1/Salinan dari Concept Illustration (5) → SDaNL6nYrmRy6L3raVDxAvla9xE.png.png" alt="Character Turnaround" class="project-img" style="margin-bottom: 2rem;">
+        <div class="stacked-image-container">
+          <img src="Page 1/Salinan dari Concept Illustration (17) 1.png" alt="Character Details Background" class="layer-bawah">
+          <img src="Page 1/Salinan dari Concept Illustration (16) 1.png" alt="Character Details Text" class="layer-atas">
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block reveal">
+      <h2 class="section-title">Equipment</h2>
+      <img src="Page 1/Salinan dari Concept Illustration (10) → Fo8XDiSM8Wk3YE31CyIWgPi0auY.png.png" alt="Prop Design" class="project-img" style="margin-bottom: 2rem;">
+      <img src="Page 1/Salinan dari Concept Illustration (9) → vzUGgACosKHCclp1YAHEI8RAzqw.png.png" alt="Weapon Design" class="project-img">
+    </section>
+
+    <section class="section-block reveal">
+      <h2 class="section-title">Creature</h2>
+      <img src="Page 1/Salinan dari Concept Illustration (13) → UDwPCGmn0WlBxNt5h19PDlpffcI.png.png" alt="Mech Crab Design" class="project-img">
+    </section>
+
+    <section class="section-block reveal">
+      <h2 class="section-title">World Building</h2>
+      
+      <div class="magnify-wrapper" style="width: 1200px; position: relative; left: 50%; transform: translateX(-50%); max-height: 720px;" onmousemove="moveMagnifier(event)" onmouseleave="resetMagnifier(event)">
+        <img src="Page 1/World Building Scenery 1 → upioCEpwbsdd0CUYqUw2ow0U.png.png" alt="Environment Concept" class="magnify-image" style="width: 100%; height: 720px; object-fit: cover;">
+      </div>
+
+      <div style="margin: 0 auto 4rem auto; max-width: 900px; text-align: center;">
+        
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 1rem;">
+          
+          <img src="Page 1/FAFSD → VZiLDeOeziPnpxtoX3RNixTEI.png.png" alt="Location Logo" style="width: 40px; height: auto;">
+          
+          <h3 style="font-family: 'DM Sans', sans-serif; font-size: 1.2rem; font-weight: 700; margin: 0;">
+            Hainan Fishing Village, China (2100)
+          </h3>
+          
+        </div>
+        
+        <p style="font-size: 0.95rem; color: #444; line-height: 1.6; margin-bottom: 1rem;">
+          Hainan Fishing Village is located in the southernmost part of China and is home to Shui and thousands of other people. The village remains a less developed area of the province, in contrast to its tall infrastructure and industrial zones. Pollution-producing machines have continued to increase year after year, without a single attempt to reduce their harmful effects on the environment until it may be too late.
+        </p>
+        
+        <p style="font-size: 0.95rem; color: #444; line-height: 1.6;">
+          This is the current state of how poor living conditions have become in Hainan Fishing Village, a consequence that everyone must face. It stands as visible proof of how humans have neglected the balance between progress and nature.
+        </p>
+      </div>
+
+      <img src="Page 1/XqNeXqg8V724lKdN3fM2fiLjFSM.png.png" alt="Architecture and Props" class="project-img" style="margin-bottom: 2rem;">
+      <img src="Page 1/Salinan dari Concept Illustration (3) → OqVH18BXK7AV37bWPQe3oOYb8Y.png.png" alt="World Map" class="project-img" style="margin-bottom: 2rem;">
+      <img src="Page 1/Salinan dari Concept Illustration (4) → S74pTqpLzfYpNFttVpOzOGxahTM.png.png" alt="Production Timeline" class="project-img">
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Kevin Macario Gunawan</p>
+    <p>Visual Communication Design</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { 
+        if (e.isIntersecting) { 
+          e.target.classList.add('visible'); 
+          io.unobserve(e.target); 
+        } 
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+
+    function moveMagnifier(e) {
+      const wrapper = e.currentTarget;
+      const img = wrapper.querySelector('.magnify-image');
+      const rect = wrapper.getBoundingClientRect();
+      
+      // Menghitung posisi koordinat mouse di dalam gambar
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Mengubah posisi ke dalam persentase
+      const xPercent = (x / rect.width) * 100;
+      const yPercent = (y / rect.height) * 100;
+      
+      // Menggeser titik fokus zoom gambar mengikuti persentase kursor
+      img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+    }
+
+    function resetMagnifier(e) {
+      const img = e.currentTarget.querySelector('.magnify-image');
+      // Mengembalikan fokus gambar ke tengah (center) jika mouse keluar
+      setTimeout(() => {
+        img.style.transformOrigin = 'center center';
+      }, 100);
+    }
+
+    const magnifyWrappers = document.querySelectorAll('.magnify-wrapper');
+    magnifyWrappers.forEach(wrapper => {
+      wrapper.addEventListener('mousemove', moveMagnifier);
+      wrapper.addEventListener('mouseleave', resetMagnifier);
+    });
+  </script>
+</body>
+</html>
