@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saekjo Studio — Kevin Macario Gunawan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f2ee;
+      --off: #e8e4de;
+      --muted: #9a9590;
+      --accent: #c8a97e;
+      --accent-dark: #8b6e4e;
+      --gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+      background: var(--black);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      font-style: italic;
+    }
+    .back-btn {
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .back-btn:hover { color: var(--accent); }
+
+    /* HERO */
+    .project-hero {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .project-hero img.bg-banner {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-text-overlay {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 25rem;
+    }
+
+    .hero-logo {
+      width: clamp(200px, 32vw, 340px);
+      height: auto;
+    }
+
+    .hero-description {
+      font-size: clamp(0.8rem, 1.6vw, 1rem);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 620px;
+      opacity: 0.92;
+      text-shadow: none;
+      color: #000000;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 2rem);
+    }
+
+    /* PROJECT HEADER */
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+      border-bottom: 1px solid var(--off);
+      padding-bottom: 3rem;
+    }
+
+    .info-list { list-style: none; }
+    .info-item { margin-bottom: 2rem; }
+    .info-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.35rem;
+    }
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.4;
+      display: block;
+    }
+
+    .software-logos {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .software-logos img {
+      width: 36px; height: 36px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .synopsis-block { margin-bottom: 1.5rem; }
+    .synopsis-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .synopsis-text {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .synopsis-divider {
+      width: 50%;
+      height: 2px;
+      background-color: var(--off);
+      margin: 1.5rem 0;
+    }
+
+    /* SECTIONS */
+    .section-block { margin-bottom: 6rem; }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--black);
+      display: inline-block;
+      padding-bottom: 0.25rem;
+    }
+
+    /* MAIN CONCEPT */
+    .main-concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .concept-pentagon {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .concept-title-en {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.1rem;
+    }
+
+    .concept-title-kr {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+
+    .concept-body {
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .concept-keywords-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-top: 1.25rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    .concept-keywords {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .project-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* MOODBOARD */
+    .moodboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .moodboard-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .moodboard-caption {
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* MASCOT DESC */
+    .mascot-desc-block { max-width: 800px; margin-bottom: 2rem; }
+    .mascot-desc-text {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--off);
+      background: var(--white);
+    }
+    footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    @media (max-width: 768px) {
+      .project-header { grid-template-columns: 1fr; gap: 2rem; }
+      .main-concept-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .moodboard-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">KMG.</a>
+    <a href="index.html" class="back-btn">← Back to Projects</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="project-hero">
+    <img src="Page 2/Hkq6Fj5OOApikTYVPeSXoNHYxqk.png.png" alt="Saekjo Studio Banner" class="bg-banner">
+    <div class="hero-text-overlay reveal">
+      <p class="hero-description">
+        A set of four characters and a sidekick mascot, each designed to represent a Korean
+        personal color season (Spring, Summer, Autumn, Winter), giving Saekjo Studio —
+        the first Korean Personal Color Studio in Surabaya — a distinct face for every palette.
+      </p>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- PROJECT INFO -->
+    <div class="project-header reveal">
+      <ul class="info-list">
+        <li class="info-item">
+          <span class="info-label">Role</span>
+          <span class="info-value">Character Design<br>Mascot Design<br>Character Animation</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Project Span</span>
+          <span class="info-value">5 Months</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Softwares</span>
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+            <img src="photoshop.jpg" alt="Adobe Photoshop">
+            <img src="aftereffects.jpg" alt="Adobe After Effects">
+            <img src="live2d.png" alt="Live2D">
+          </div>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Target Medium</span>
+          <span class="info-value">Brand Mascots</span>
+        </li>
+      </ul>
+
+      <div class="synopsis">
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Background</h2>
+          <p class="synopsis-text">
+            Korean personal color analysis is a growing beauty and fashion trend, but it can
+            be hard for people to visualize and relate to each seasonal type. Saekjo Studio,
+            Surabaya's first Korean personal color studio, needed characters that could bring
+            these four palettes to life in a way that feels personal and memorable.
+          </p>
+        </div>
+
+        <div class="synopsis-divider"></div>
+
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Design Objective</h2>
+          <p class="synopsis-text">
+            To design representative mascots and characters that communicate each Korean
+            personal color type clearly, helping Saekjo Studio build a stronger, more
+            distinctive brand identity that their audience can connect with.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONCEPT -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Main Concept</h2>
+      <div class="main-concept-grid">
+        <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (1) 1.png" alt="Gems of Korea Pentagon" class="concept-pentagon">
+        <div>
+          <h3 class="concept-title-en">Gems of Korea</h3>
+          <p class="concept-title-kr">한국의 보석</p>
+          <p class="concept-body">
+            The main concept behind creating Saekjo Studio's characters and mascots is the idea of standing out in
+            a beautiful and authentic way. Just like a gem hidden among plain grey rocks, Saekjo Studio is dedicated to
+            revealing the unique beauty within every person.
+            Everyone deserves to feel special, and being Special
+            is everyone's right.
+          </p>
+          <p class="concept-body">
+            This idea shapes the character's personality and
+            visual identity, encouraging people to shine by
+            embracing.
+          </p>
+          <p class="concept-keywords-label">Keywords</p>
+          <p class="concept-keywords">Special / Eye-Catching / Self-Expression</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOODBOARD -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Moodboard</h2>
+      <div class="moodboard-grid">
+        <div class="moodboard-item">
+          <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (3) → WACkvcfDTUQQQNirSbSQg4ioi9Y.png.png" alt="Spring Moodboard" class="project-img">
+          <p class="moodboard-caption" style="color: #FFC34C;">Spring 봄 (Bom)</p>
+        </div>
+        <div class="moodboard-item">
+          <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (4) → TedUrAIZEWzVLjBjFbb0w1SCjc.png.png" alt="Summer Moodboard" class="project-img">
+          <p class="moodboard-caption" style="color: #FE87C1;">Summer 여름 (Yeoreum)</p>
+        </div>
+        <div class="moodboard-item">
+          <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (5) → MSAfyN17epCjpQxMaYSMJkPQ7M.png.png" alt="Autumn Moodboard" class="project-img">
+          <p class="moodboard-caption" style="color: #CE5E43;">Autumn 가을 (Gaeul)</p>
+        </div>
+        <div class="moodboard-item">
+          <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (7) → nFJWyww3J2YEoVGG2OIGP2Tlio.png.png" alt="Winter Moodboard" class="project-img">
+          <p class="moodboard-caption" style="color: #5884FB;">Winter 겨울 (Gyeoul)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASCOT DESIGN — SPRING -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Mascot Design</h2>
+
+      <!-- Spring Banner -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (3) 1.png" alt="Spring Banner" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
+
+      <!-- Spring Concept Sketches -->
+      <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (9) 1.png" alt="Spring Early Concept" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Spring Model Sheet -->
+      <img src="Page 2/24.png" alt="Spring Character Model" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Spring Description -->
+      <div class="mascot-desc-block">
+        <p class="mascot-desc-text">
+          Spring is brought to life through bright, warm colors and an expressive hairstyle that feels youthful without being childish. Her design captures an extroverted warmth — the kind of person who walks into a room and instantly makes it feel lighter, like sunshine finding its way through a field of flowers.
+        </p>
+      </div>
+
+      <!-- Spring Final Character Sheet -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (7) 1.png" alt="Spring Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block;">
+    </section>
+
+    <!-- MASCOT DESIGN — SUMMER -->
+    <section class="section-block reveal">
+
+      <!-- Summer Banner -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (8) 1.png" alt="Summer Banner" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
+
+      <!-- Summer Concept Sketches -->
+      <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (12) 1.png" alt="Summer Early Concept" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Summer Model Sheet -->
+      <img src="Page 2/26.png" alt="Summer Character Model" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Summer Description -->
+      <div class="mascot-desc-block">
+        <p class="mascot-desc-text">
+          Summer is built around soft, cool tones and a clean, put together look that feels effortlessly elegant without trying too hard. Her design carries a quiet romantic energy, the kind of person who is deeply devoted and a little dramatic about it, someone whose feelings are always just beneath the surface.
+        </p>
+      </div>
+
+      <!-- Summer Final Character Sheet -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (10) 1.png" alt="Summer Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block;">
+    </section>
+
+    <!-- MASCOT DESIGN — AUTUMN -->
+    <section class="section-block reveal">
+
+      <!-- Autumn Banner -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (13) 1.png" alt="Autumn Banner" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
+
+      <!-- Autumn Concept Sketches -->
+      <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (13) 1.png" alt="Autumn Early Concept" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Autumn Model Sheet -->
+      <img src="Page 2/25.png" alt="Autumn Character Model" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Autumn Description -->
+      <div class="mascot-desc-block">
+        <p class="mascot-desc-text">
+          Autumn is designed with deep, rich tones and a polished silhouette that radiates luxury and authority without saying a word. Her design carries the energy of someone who has always known her worth, elegant, dominant, and effortlessly commanding, the kind of presence that fills a room before she even walks in.
+        </p>
+      </div>
+
+      <!-- Autumn Final Character Sheet -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (12) 1.png" alt="Autumn Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block;">
+    </section>
+
+    <!-- MASCOT DESIGN — WINTER -->
+    <section class="section-block reveal">
+
+      <!-- Winter Banner -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (13) 1 (1).png" alt="Winter Banner" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
+
+      <!-- Winter Concept Sketches -->
+      <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (14) 1.png" alt="Winter Early Concept" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Winter Model Sheet -->
+      <img src="Page 2/27.png" alt="Winter Character Model" class="project-img" style="margin-bottom: 2rem;">
+
+      <!-- Winter Description -->
+      <div class="mascot-desc-block">
+        <p class="mascot-desc-text">
+          Winter is built around dark, bold tones and a sharp, unconventional style that sets her apart from everyone else in the room. Her design carries a cold and mysterious energy, the kind of person who does not chase trends but defines them, untouchable, charismatic, and completely in a league of her own.
+        </p>
+      </div>
+
+      <!-- Winter Final Character Sheet -->
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (14) 1.png" alt="Winter Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block;">
+    </section>
+
+    <!-- MASCOT DESIGN — SIDEKICK -->
+    <section class="section-block reveal">
+
+    <!-- Sidekick Banner -->
+    <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (15) 1.png" alt="Sidekick Banner" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
+
+    <!-- Animal Reference + First Sketches -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+        <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (16) 1.png" alt="Animal References" style="width: 100%; height: auto; display: block;">
+        <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (17) 2.png" alt="Arrow" style="width: 32px; height: auto; flex-shrink: 0; margin-right: 10rem;">
+        </div>
+        <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (15) 1.png" alt="First Sketches" style="width: 100%; height: auto; display: block; margin-left: 2rem;">
+    </div>
+
+    <!-- Description 1 -->
+    <div class="mascot-desc-block" style="margin-bottom: 2rem; max-width: 100%; text-align: center;">
+    <p class="mascot-desc-text">
+        Starting from nature, animals with unique and extraordinary color identities are explored, eventually leading to the peacock mantis shrimp as the most compelling choice to develop further.
+    </p>
+    </div>
+
+    <!-- Exploration + Detailed and Final Shape -->
+    <div style="display: grid; grid-template-columns: auto 1fr 1fr; gap: 2rem; align-items: center; margin-bottom: 1.5rem;">
+    <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (17) 3.png" alt="Basic" style="width: 225px; height: auto; display: block;">
+    <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (17) 1.png" alt="Exploration" style="width: 100%; height: auto; display: block;">
+    <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (18) 1.png" alt="Detailed and Final Shape" style="width: 100%; height: auto; display: block;">
+    </div>
+
+    <!-- Description 2 -->
+    <div class="mascot-desc-block" style="margin-bottom: 2rem; max-width: 100%; padding: 0 4rem;">
+    <p class="mascot-desc-text">
+        This phase is about finding the right form, exploring and combining shapes while drawing from the iconic traits of the peacock mantis shrimp combined with a Korean touch to build a mascot that is both unique and instantly recognizable.
+    </p>
+    </div>
+
+    <!-- Final Mascot -->
+    <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (19) 2.png" alt="Sidekick Final Mascot" class="project-img">
+
+    <!-- Character Turnaround -->
+    <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (20) 3.png" alt="Sidekick Character Turnaround" class="project-img" style="margin-bottom: 2rem;">
+
+    <!-- Final Character Sheet -->
+    <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust 1.png" alt="Sidekick Final Character Sheet" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
+
+    <!-- Expressions Sheet -->
+    <img src="Page 2/45.png" alt="Sidekick Expressions" class="project-img" style="margin-bottom: 2rem;">
+
+    <!-- Poses Sheet -->
+    <img src="Page 2/46.png" alt="Sidekick Poses" class="project-img" style="margin-bottom: 2rem;">
+
+    <!-- Sidekick Description -->
+    <div class="mascot-desc-block" style="max-width: 100%; text-align: left; margin: 0 auto; padding: 0 4rem;">
+        <p class="mascot-desc-text">
+            Saekjuwon comes to life through a range of expressions and behaviors that show exactly who this sidekick is within the Saekjo Studio world, helpful, dedicated to finding the right personal color for everyone, and just a little bit funny when the moment calls for it.
+        </p>
+    </div>
+
+    </section>
+
+    <!-- TEAM -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Team</h2>
+    <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (9) 2.png" alt="Team" class="project-img">
+    </section>
+
+    <!-- MAP -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Map</h2>
+
+    <!-- Intro text -->
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; margin-bottom: 2rem;">
+        All the Hyang-gi girls originate from different regions across the Republic of Korea, as shown on the map. Each city contributes unique characteristics that shape their lifestyle and the vibe they carry.
+    </p>
+
+    <!-- Map image + city descriptions side by side -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+
+        <!-- Map image -->
+        <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (11) 1.png" alt="South Korea Map" style="width: 100%; height: auto; display: block;">
+
+        <!-- City descriptions -->
+        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+
+        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem;">
+            <p style="font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; color: #5884FB;">Seoul</p>
+            <p style="font-size: 0.9rem; color: #444; line-height: 1.7;">The capital of South Korea, famous for its nightlife with endless neon lights lining the streets, filled with bars and karaoke spots, is the perfect place for Yejun Floe.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem;">
+            <p style="font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; color: #FE87C1;">Gangneung</p>
+            <p style="font-size: 0.9rem; color: #444; line-height: 1.7;">A city in the eastern part of South Korea, is less crowded yet still developed with many universities. Its small village feel, influenced by traditional Korean villages far from the capital, perfectly suits the vibe of Jionha Pearl.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem;">
+            <p style="font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; color: #CE5E43;">Busan</p>
+            <p style="font-size: 0.9rem; color: #444; line-height: 1.7;">One of the major cities in the southern part of South Korea, is iconic for its bustling business scene, with skyscrapers, factories, and busy streets filled with people. It perfectly suits Daewona Claire as a hardworking businesswoman and commanding boss.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem;">
+            <p style="font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 700; color: #FFC34C;">Jeju-Do</p>
+            <p style="font-size: 0.9rem; color: #444; line-height: 1.7;">A small island in the southern part of the Korean Peninsula, is full of nature, especially beaches and parks. Its calm and quiet atmosphere, where the sounds of birds fill the air, makes it a perfect place for Soyuna Pippi to take a break from reality.</p>
+        </div>
+
+        <div>
+            <p style="font-size: 0.9rem; color: #444; line-height: 1.7;">Saek-juwon originates from the colorful and diverse coral reefs of the Pacific Ocean but accidentally ended up on land in Korea by boat. He now enjoys helping out at Saekjo Studios.</p>
+        </div>
+
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- INTRODUCTION POSTER -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Introduction Poster</h2>
+
+    <!-- Poster full width -->
+    <img src="Page 2/fwfwfwf 1.png" alt="Introduction Poster" style="width: calc(100vw - 2rem); position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
+
+    <!-- Poster description -->
+    <p style="font-size: 0.95rem; color: #444; line-height: 1.8; text-align: left;">
+        The poster is created as an introduction to Saekjo Studio's mascots, the Hyanggi Girls and Juwon as the little sidekick. The scene is set inside Saekjo's personal color and analysis studio, presented as a lively working space filled with makeup tools, color charts, mirrors, and familiar studio elements that reflect the brand's daily environment.
+    </p>
+    </section>
+
+    <!-- ANIMATION -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Animation</h2>
+    <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust 2.png" alt="Character Animation" class="project-img">
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Kevin Macario Gunawan</p>
+    <p>Visual Communication Design</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
