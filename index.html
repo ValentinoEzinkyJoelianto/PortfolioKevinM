@@ -41,6 +41,14 @@
     background: var(--blue);
   }
 
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    text-decoration: none;
+    font-style: italic;
+  }
+
   .nav-year {
     font-family: 'Cormorant Garamond', serif;
     font-size: 0.85rem;
@@ -176,7 +184,7 @@
 
   /* ABOUT SECTION */
   .section-about {
-    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 4rem);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--gap);
@@ -615,73 +623,13 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-year">20<br>26</div>
+  <a href="index.html" class="nav-brand">KMG.</a>
   <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Home</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#about">About</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-main">
-    <p class="hero-eyebrow">Kevin Macario Gunawan's</p>
-    <h1 class="hero-title">PORT<span>FOLIO</span></h1>
-    <div class="hero-disciplines">
-      <span>IP Design</span>
-      <span>Illustration</span>
-      <span>Traditional Game</span>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section-about reveal" id="about">
-  <div class="about-left">
-    <div class="about-label">Greetings</div>
-    <h2 class="about-heading">Visual worlds,<br><em>story-driven</em><br>by design.</h2>
-  </div>
-  <div class="about-right">
-    <p class="about-body">I am a visual communication design student and concept artist focused on creating original characters and immersive worlds. My work blends storytelling, cultural inspiration, and stylized design to build engaging experiences. I develop ideas from concept to refined visuals, aiming to create story-driven worlds for games and visual media.</p>
-    <div class="achievements-title">Achievements</div>
-    <div class="achievement-item">
-      <span class="achievement-num">01</span>
-      <span class="achievement-text">Best Presenter at International Conference on Entrepreneurship (ICOEN) XII, 2025</span>
-    </div>
-    <div class="achievement-item">
-      <span class="achievement-num">02</span>
-      <span class="achievement-text">2nd Prize Winner — Dislyte Summer Bash Fanart Contest</span>
-    </div>
-    <div class="achievement-item">
-      <span class="achievement-num">03</span>
-      <span class="achievement-text">Runner-up — Andalas Fanart Contest</span>
-    </div>
-  </div>
-</section>
-
-<!-- SOFTWARE -->
-<section class="section-software reveal">
-  <div class="about-label">Software</div>
-  <div class="software-grid">
-    <div class="software-badge">
-      <img src="clipstudio.jpg" alt="Clip Studio Paint" />
-      Clip Studio Paint
-    </div>
-    <div class="software-badge">
-      <img src="photoshop.jpg" alt="Adobe Photoshop" />
-      Adobe Photoshop
-    </div>
-    <div class="software-badge">
-      <img src="aftereffects.jpg" alt="Adobe After Effects" />
-      Adobe After Effects
-    </div>
-    <div class="software-badge">
-      <img src="live2d.png" alt="Live2D" />
-      Live2D
-    </div>
-  </div>
-</section>
 
 <!-- PROJECTS -->
 <section class="section-projects reveal" id="projects">
@@ -767,6 +715,53 @@
 
     </div>
 
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-about reveal" id="about">
+  <div class="about-left">
+    <div class="about-label">Greetings</div>
+    <h2 class="about-heading">Visual worlds,<br><em>story-driven</em><br>by design.</h2>
+  </div>
+  <div class="about-right">
+    <p class="about-body">I am a visual communication design student and concept artist focused on creating original characters and immersive worlds. My work blends storytelling, cultural inspiration, and stylized design to build engaging experiences. I develop ideas from concept to refined visuals, aiming to create story-driven worlds for games and visual media.</p>
+    <div class="achievements-title">Achievements</div>
+    <div class="achievement-item">
+      <span class="achievement-num">01</span>
+      <span class="achievement-text">Best Presenter at International Conference on Entrepreneurship (ICOEN) XII, 2025</span>
+    </div>
+    <div class="achievement-item">
+      <span class="achievement-num">02</span>
+      <span class="achievement-text">2nd Prize Winner — Dislyte Summer Bash Fanart Contest</span>
+    </div>
+    <div class="achievement-item">
+      <span class="achievement-num">03</span>
+      <span class="achievement-text">Runner-up — Andalas Fanart Contest</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOFTWARE -->
+<section class="section-software reveal">
+  <div class="about-label">Software</div>
+  <div class="software-grid">
+    <div class="software-badge">
+      <img src="clipstudio.jpg" alt="Clip Studio Paint" />
+      Clip Studio Paint
+    </div>
+    <div class="software-badge">
+      <img src="photoshop.jpg" alt="Adobe Photoshop" />
+      Adobe Photoshop
+    </div>
+    <div class="software-badge">
+      <img src="aftereffects.jpg" alt="Adobe After Effects" />
+      Adobe After Effects
+    </div>
+    <div class="software-badge">
+      <img src="live2d.png" alt="Live2D" />
+      Live2D
+    </div>
   </div>
 </section>
 
