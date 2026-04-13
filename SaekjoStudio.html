@@ -401,7 +401,7 @@
     </div>
 
     <!-- MAIN CONCEPT -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="mainconcept">
       <h2 class="section-title">Main Concept</h2>
       <div class="main-concept-grid">
         <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (1) 1.png" alt="Gems of Korea Pentagon" class="concept-pentagon">
@@ -427,7 +427,7 @@
     </section>
 
     <!-- MOODBOARD -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="moodboard">
       <h2 class="section-title">Moodboard</h2>
       <div class="moodboard-grid">
         <div class="moodboard-item">
@@ -450,7 +450,7 @@
     </section>
 
     <!-- MASCOT DESIGN — SPRING -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="mascot">
       <h2 class="section-title">Mascot Design</h2>
 
       <!-- Spring Banner -->
@@ -603,13 +603,13 @@
     </section>
 
     <!-- TEAM -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="team">
     <h2 class="section-title">Team</h2>
     <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (9) 2.png" alt="Team" class="project-img">
     </section>
 
     <!-- MAP -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="map">
     <h2 class="section-title">Map</h2>
 
     <!-- Intro text -->
@@ -656,7 +656,7 @@
     </section>
 
     <!-- INTRODUCTION POSTER -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="poster">
     <h2 class="section-title">Introduction Poster</h2>
 
     <!-- Poster full width -->
@@ -669,9 +669,9 @@
     </section>
 
     <!-- ANIMATION -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="animation">
       <h2 class="section-title">Animation</h2>
-      <img src="Page 2/Saekjo Gif.gif" alt="Character Animation" class="project-img" style="border-bottom: 2px solid #ccc;">
+      <img src="Page 2/Saekjo Gif.gif" alt="Character Animation" class="project-img" style="border-bottom: 2px solid #ccc; margin-top: -3rem;">
     </section>
 
   </main>
@@ -692,6 +692,26 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => io.observe(el));
+
+    // Lazy load GIF — baru mulai ketika terlihat
+    const gifs = document.querySelectorAll('img[src$=".gif"]');
+    gifs.forEach(gif => {
+      const src = gif.getAttribute('src');
+      gif.setAttribute('data-src', src);
+      gif.removeAttribute('src');
+    });
+
+    const gifObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const img = e.target;
+          img.setAttribute('src', img.getAttribute('data-src'));
+          gifObserver.unobserve(img);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    gifs.forEach(gif => gifObserver.observe(gif));
   </script>
 </body>
 </html>

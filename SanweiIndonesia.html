@@ -22,6 +22,38 @@
       --gap: clamp(1.5rem, 4vw, 3rem);
     }
 
+    html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    }
+
+    nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+    background: var(--blue);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    }
+
+    .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    }
+    .nav-links a {
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
     body {
       background: #ffffff;
       color: var(--black);
@@ -316,10 +348,17 @@
 </head>
 <body>
 
-  <nav>
+    <nav>
     <a href="index.html" class="nav-brand">KMG.</a>
-    <a href="index.html" class="back-btn">← Back to Projects</a>
-  </nav>
+    <ul class="nav-links">
+        <li><a href="#studycase">Study Case</a></li>
+        <li><a href="#exploration">Exploration</a></li>
+        <li><a href="#character">Character</a></li>
+        <li><a href="#animation">Animation</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+    </ul>
+    <a href="index.html" class="back-btn">← Back</a>
+    </nav>
 
   <!-- HERO -->
   <div class="project-hero">
@@ -381,7 +420,7 @@
     </div>
 
     <!-- STUDY CASE -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="studycase">
     <h2 class="section-title">Study Case</h2>
     <div class="study-case-grid">
         <img src="Page 4/vwewv 1.png" alt="Field Sport Enjoyed by Indonesians" class="project-img">
@@ -392,7 +431,7 @@
     </section>
 
     <!-- EXPLORATION -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="exploration">
     <h2 class="section-title">Exploration</h2>
 
     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 2rem;">
@@ -420,7 +459,7 @@
     </section>
 
     <!-- CHARACTER DESIGN -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="character">
     <h2 class="section-title">Character Design</h2>
 
     <div style="display: grid; grid-template-columns: 1fr 0.85fr; gap: 2rem; margin-bottom: 2rem;">
@@ -453,10 +492,10 @@
     </section>
 
     <!-- ANIMATION -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="animation">
     <h2 class="section-title">Animation</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; justify-items: center;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; justify-items: center; margin-top: -4rem;">
         <img src="Page 4/Sanwei Two_.gif" alt="Sanwei Duo Animation" class="project-img">
         <img src="Page 4/sanwei background putih1.gif" alt="Sanwei Animation Center" class="project-img">
         <img src="Page 4/Sanwei character 1 gifski.gif" alt="Sanwei Character 1 Animation" class="project-img">
@@ -468,7 +507,7 @@
     </section>
 
     <!-- IMPLEMENTATION IDEA -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="implementation">
       <h2 class="section-title">Implementation Idea</h2>
 
       <div class="implementation-grid">
@@ -491,14 +530,34 @@
   <script>
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
+    entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
         }
-      });
+    });
     }, { threshold: 0.1 });
     reveals.forEach(el => io.observe(el));
+
+    // Lazy load GIF — baru mulai ketika terlihat
+    const gifs = document.querySelectorAll('img[src$=".gif"]');
+    gifs.forEach(gif => {
+    const src = gif.getAttribute('src');
+    gif.setAttribute('data-src', src);
+    gif.removeAttribute('src');
+    });
+
+    const gifObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+        const img = e.target;
+        img.setAttribute('src', img.getAttribute('data-src'));
+        gifObserver.unobserve(img);
+        }
+    });
+    }, { threshold: 0.2 });
+
+    gifs.forEach(gif => gifObserver.observe(gif));
   </script>
 </body>
 </html>
