@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanwei Indonesia — Kevin Macario Gunawan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --off: #e8e4de;
+      --muted: #9a9590;
+      --accent: #c8a97e;
+      --accent-dark: #8b6e4e;
+      --blue: #2E81EC;
+      --red: #D32F2F;
+      --gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+      background: var(--blue);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      font-style: italic;
+    }
+    .back-btn {
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .back-btn:hover { color: var(--accent); }
+
+    /* HERO */
+    .project-hero {
+      position: relative;
+      width: calc(100% - 4rem);
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: 2rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      border-radius: 4px;
+    }
+
+    .project-hero img.bg-banner {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-text-overlay {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 25rem;
+    }
+
+    .hero-description {
+      font-size: clamp(0.8rem, 1.6vw, 1rem);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 620px;
+      opacity: 0.92;
+      text-shadow: none;
+      color: #000000;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 2rem);
+    }
+
+    /* PROJECT HEADER */
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+      border-bottom: 1px solid var(--off);
+      padding-bottom: 3rem;
+    }
+
+    .info-list { list-style: none; }
+    .info-item { margin-bottom: 2rem; }
+    .info-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.35rem;
+    }
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.4;
+      display: block;
+    }
+
+    .software-logos {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .software-logos img {
+      width: 36px; height: 36px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .synopsis-block { margin-bottom: 1.5rem; }
+    .synopsis-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .synopsis-text {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .synopsis-divider {
+      width: 50%;
+      height: 2px;
+      background-color: var(--off);
+      margin: 1.5rem 0;
+    }
+
+    /* SECTIONS */
+    .section-block { margin-bottom: 6rem; }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--black);
+      display: inline-block;
+      padding-bottom: 0.25rem;
+    }
+
+    .project-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* STUDY CASE */
+    .study-case-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .study-case-text {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    /* EXPLORATION */
+    .exploration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .exploration-single {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .exploration-desc {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+    }
+
+    /* CHARACTER DESIGN */
+    .character-duo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .character-expression-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .character-desc {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ANIMATION */
+    .animation-top-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .animation-center {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .animation-center img {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .animation-desc {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+    }
+
+    /* IMPLEMENTATION */
+    .implementation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .implementation-desc {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+      margin-top: 1.5rem;
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--off);
+      background: var(--white);
+    }
+    footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    @media (max-width: 768px) {
+      .project-header { grid-template-columns: 1fr; gap: 2rem; }
+      .study-case-grid { grid-template-columns: 1fr; }
+      .exploration-grid { grid-template-columns: 1fr; }
+      .character-duo-grid { grid-template-columns: 1fr; }
+      .character-expression-grid { grid-template-columns: 1fr; }
+      .animation-top-grid { grid-template-columns: 1fr; }
+      .implementation-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">KMG.</a>
+    <a href="index.html" class="back-btn">← Back to Projects</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="project-hero">
+    <img src="Page 4/Salinan dari Kevin Macario G AFL2 Illust (23) 1.png" alt="Sanwei Indonesia Banner" class="bg-banner">
+    <div class="hero-text-overlay reveal">
+      <p class="hero-description">
+        A duo of competitive teenage mascots built to represent Sanwei Indonesia's brand,
+        attract younger audiences to table tennis, and engage them across social media
+        and campaigns.
+      </p>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- PROJECT INFO -->
+    <div class="project-header reveal">
+      <ul class="info-list">
+        <li class="info-item">
+          <span class="info-label">Role</span>
+          <span class="info-value">Character Design<br>Mascot Design<br>Character Animation</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Project Span</span>
+          <span class="info-value">1 Month</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Softwares</span>
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+            <img src="photoshop.jpg" alt="Adobe Photoshop">
+            <img src="aftereffects.jpg" alt="Adobe After Effects">
+            <img src="live2d.png" alt="Live2D">
+          </div>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Target Medium</span>
+          <span class="info-value">Brand Mascots</span>
+        </li>
+      </ul>
+
+      <div class="synopsis">
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Background</h2>
+          <p class="synopsis-text">
+            Table tennis in Indonesia struggles to connect with younger audiences. Sanwei Indonesia needed a fresh, relatable face for their brand, one that speaks the language of youth, lives on social media, and makes the sport feel exciting and worth picking up.
+          </p>
+        </div>
+
+        <div class="synopsis-divider"></div>
+
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Design Objective</h2>
+          <p class="synopsis-text">
+            To design a duo of teen mascots (male & female) that represent Sanwei Indonesia's competitive spirit, attract younger audiences to table tennis, and serve as an engaging brand presence across social media and campaigns.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STUDY CASE -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Study Case</h2>
+    <div class="study-case-grid">
+        <img src="Page 4/vwewv 1.png" alt="Field Sport Enjoyed by Indonesians" class="project-img">
+        <p class="study-case-text" style="font-size: 1.05rem; line-height: 1.9;">
+        According to Populix, badminton leads Indonesia's sports interest at 96% while table tennis sits at only 9%. This gap is exactly why Sanwei Indonesia needed fresh, digital-native mascots that could reposition table tennis as a whole community in Indonesia.
+        </p>
+    </div>
+    </section>
+
+    <!-- EXPLORATION -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Exploration</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; margin-bottom: 2rem;">
+        
+        <!-- Kiri: gambar 1 tinggi -->
+        <img src="Page 4/fewwfe 1.png" alt="Exploration Sketches 1" class="project-img">
+
+        <!-- Kanan: 2 baris -->
+        <div style="display: grid; grid-template-rows: 1fr 1fr; max-width: 100%;">
+        <div style="display: grid; grid-template-columns: 1.5fr 3.5fr; gap: 2rem;">
+            <img src="Page 4/veever 2.png" alt="Exploration Sketches 2" class="project-img">
+            <img src="Page 4/asdasdrf 1.png" alt="Exploration Sketches 3" class="project-img">
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 2rem;">
+            <img src="Page 4/veever 1.png" alt="Exploration Sketches 4" class="project-img">
+            <img src="Page 4/sasadas 1.png" alt="Exploration Sketches 5" class="project-img">
+        </div>
+        </div>
+
+    </div>
+
+    <p class="exploration-desc">
+        The exploration phase focuses on finding the right shape and energy for both characters, their interactions, and expressions that capture the competitive yet fun spirit of a real table tennis player.
+    </p>
+    </section>
+
+    <!-- CHARACTER DESIGN -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Character Design</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 0.85fr; gap: 2rem; margin-bottom: 2rem;">
+
+        <div style="display: grid; grid-template-columns: 1fr 0.83fr; gap: 0;">
+        <div style="position: relative;">
+            <p style="position: absolute; top: 8rem; left: 0; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700;">Sanhao <span style="color: var(--black);">(三好)</span></p>
+            <img src="Page 4/Character 2 (Besar) 1.png" alt="Sanhao" class="project-img">
+        </div>
+        <div style="position: relative;">
+            <p style="position: absolute; top: 0; right: 0; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; text-align: right;">Weiming <span style="color: var(--black);">(薇明)</span></p>
+            <img src="Page 4/Character 1 (Besar) 1.png" alt="Weiming" class="project-img">
+        </div>
+        </div>
+
+        <!-- Kanan: expression atas bawah -->
+        <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 2rem;">
+        <img src="Page 4/Sanwei Expression 2 1.png" alt="Sanwei Expression Sheet 2" class="project-img">
+        <img src="Page 4/Sanwei Expression 1 1.png" alt="Sanwei Expression Sheet 1" class="project-img">
+        </div>
+
+    </div>
+
+    <p class="character-desc">
+        The boy and girl are built to complement each other as a duo while each holding their own distinct visual identity. Table tennis gear and outfits ground them in the sport, and Sanwei's logo and products are integrated naturally into the design without feeling forced.
+    </p>
+    <p class="character-desc">
+        Both characters are designed to feel like a natural duo while staying visually distinct from each other. Their outfits and gear reflect an authentic table tennis player look, and Sanwei's logo and products are integrated naturally into the design without feeling forced.
+    </p>
+    </section>
+
+    <!-- ANIMATION -->
+    <section class="section-block reveal">
+    <h2 class="section-title">Animation</h2>
+
+    <div style="position: relative;">
+        <!-- Two GIFs side by side -->
+        <div class="animation-top-grid">
+        <img src="Page 4/Sanwei Two_.gif" alt="Sanwei Duo Animation" class="project-img">
+        <img src="Page 4/Sanwei character 1 gifski.gif" alt="Sanwei Character 1 Animation" class="project-img" style="margin-left: 4rem;">
+        </div>
+
+        <!-- Center GIF — menumpuk di tengah -->
+        <img src="Page 4/sanwei background putih1.gif" alt="Sanwei Animation Center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 30%; z-index: 2;">
+    </div>
+
+    <p class="animation-desc">
+        Both characters are brought to life through animation, adding movement and expression that make Sanhao and Wanming feel more dynamic and engaging for their audience.
+    </p>
+    </section>
+
+    <!-- IMPLEMENTATION IDEA -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Implementation Idea</h2>
+
+      <div class="implementation-grid">
+        <img src="Page 4/Sanwei Indoensia Post 2 1.png" alt="Sanwei Post 2" class="project-img">
+        <img src="Page 4/Sanwei Indonesia post 1 1.png" alt="Sanwei Post 1" class="project-img">
+      </div>
+
+      <p class="implementation-desc">
+        This is one implementation of how both characters interact with their audience in the digital platform. In this case, Sanhao and Wanming promote the brand new Sanwei racket, presenting its specifications and specialty through their own dynamic personalities.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Kevin Macario Gunawan</p>
+    <p>Visual Communication Design</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
