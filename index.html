@@ -33,12 +33,14 @@
 
   /* NAV */
   nav {
-    position: static;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
     background: var(--blue);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
   .nav-brand {

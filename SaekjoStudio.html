@@ -21,6 +21,35 @@
       --blue: #2E81EC;
     }
 
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+      background: var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
     body {
       background: #ffffff;
       color: var(--black);
@@ -295,7 +324,16 @@
 
   <nav>
     <a href="index.html" class="nav-brand">KMG.</a>
-    <a href="index.html" class="back-btn">← Back to Projects</a>
+    <ul class="nav-links">
+      <li><a href="#mainconcept">Main Concept</a></li>
+      <li><a href="#moodboard">Moodboard</a></li>
+      <li><a href="#mascot">Mascot Design</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#map">Map</a></li>
+      <li><a href="#poster">Poster</a></li>
+      <li><a href="#animation">Animation</a></li>
+    </ul>
+    <a href="index.html" class="back-btn">← Back</a>
   </nav>
 
   <!-- HERO -->
