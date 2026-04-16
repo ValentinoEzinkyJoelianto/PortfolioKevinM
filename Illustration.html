@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Illustration — Kevin Macario Gunawan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --off: #e8e4de;
+      --muted: #9a9590;
+      --accent: #c8a97e;
+      --blue: #2E81EC;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      background: #ffffff;
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+      background: var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      font-style: italic;
+    }
+    .back-btn {
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .back-btn:hover { color: var(--accent); }
+
+    /* HERO */
+    .project-hero {
+      position: relative;
+      width: calc(100% - 4rem);
+      height: auto;
+      display: block;
+      overflow: hidden;
+      margin-top: 2rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      border-radius: 4px;
+    }
+    .project-hero img.bg-banner {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-title-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      text-align: center;
+    }
+    .hero-title-overlay h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      letter-spacing: 0.05em;
+      color: #ffffff;
+      text-shadow: 2px 4px 12px rgba(0,0,0,0.5);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .project-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* DIAGRAM */
+    .diagram-section {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .diagram-desc {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.8;
+      max-width: 1200px;
+      margin: 1.5rem auto 0;
+      text-align: left;
+    }
+
+    /* ILLUSTRATION PIECE */
+    .illust-piece {
+      margin-bottom: 6rem;
+      border-top: 1px solid var(--off);
+      padding-top: 4rem;
+    }
+
+    .illust-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .illust-grid-full {
+      margin-bottom: 1rem;
+    }
+
+    .illust-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .illust-caption-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .software-logos {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .software-logos img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .illust-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+
+    .illust-desc {
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.8;
+      flex: 1;
+      text-align: center;
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--off);
+      background: var(--white);
+    }
+    footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    @media (max-width: 768px) {
+      .illust-grid { grid-template-columns: 1fr; }
+      .illust-caption { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">KMG.</a>
+    <a href="index.html" class="back-btn">← Back</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="project-hero">
+    <img src="Page 5/etbrnrn 1.png" alt="Illustration Banner" class="bg-banner">
+  </div>
+
+  <main class="container">
+
+    <!-- DIAGRAM -->
+    <div class="diagram-section reveal">
+      <img src="Page 5/dfsfsfsd 1.png" alt="Illustration Diagram" class="project-img" style="max-width: 800px; margin: 0 auto;">
+      <p class="diagram-desc">
+        These illustrations are built on three core elements: concept story, visual language, and small details. Each piece begins with a narrative foundation, translated through thoughtful composition, color, and form, then refined with subtle details that enrich the world and invite deeper exploration to the audience.
+      </p>
+    </div>
+
+    <!-- 1. BON VOYAGE ESPERS -->
+    <div class="illust-piece reveal">
+      <div class="illust-grid-full">
+        <img src="Page 5/DISLYTE .gif" alt="Dislyte Process" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+        <img src="Page 5/Dislyte 4 1.png" alt="Bon Voyage Espers" class="project-img" loading="lazy">
+      </div>
+      <div class="illust-caption">
+        <div>
+          <p class="illust-title">Bon Voyage, Espers</p>
+          <p class="illust-desc">Nobody gets left behind on a summer trip. Bon Voyage, Espers brings the Dislyte espers together at a sun-soaked dock, bags packed and vibes immaculate. This artwork is created for the Dislyte Summer Bash Contest 2025, the piece earned 2nd place, and yes, the duck made it too.</p>
+        </div>
+        <div class="illust-caption-right">
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. NOT EVERY LOVE STORY -->
+    <div class="illust-piece reveal">
+      <div class="illust-grid">
+        <img src="Page 5/gardening .gif" alt="Gardening Process" class="project-img" loading="lazy">
+        <img src="Page 5/Kevin CSP Contest 44 1.png" alt="Not Every Love Story" class="project-img" loading="lazy">
+      </div>
+      <div class="illust-caption">
+        <div>
+          <p class="illust-title">Not Every Love Story Blooms Freely</p>
+          <p class="illust-desc">This flower shop in the middle of nowhere looks ordinary enough, until it does not. While the florist works quietly, a fly finds itself trapped in a terrarium, separated from a venus flytrap next door who might just be waiting for love or maybe food. Artwork created for the Plants and Flowers 44th International CSP Illustration Contest.</p>
+        </div>
+        <div class="illust-caption-right">
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. FACING HORDE -->
+    <div class="illust-piece reveal">
+      <div class="illust-grid">
+        <img src="Page 5/busy beaver .gif" alt="Busy Beaver Process" class="project-img" loading="lazy">
+        <img src="Page 5/Busy Beaver Andalas top10respect_ 1.png" alt="Facing Horde of Rimbala Monster" class="project-img" loading="lazy">
+      </div>
+      <div class="illust-caption">
+        <div>
+          <p class="illust-title">Facing Horde of Rimbala's Monster</p>
+          <p class="illust-desc">The Rimbala is vast, dangerous, and full of things that should not exist. Rei, a brave boy, moves through it all, facing hordes of monsters and the gigantic carnivorous plant that surely will bring a lot of trouble. It is a wild adventure into the unknown, but do not worry, as his little blue furred bunny is always by his side. This artwork is created for the Andalas Fanart Contest, winning as Runner Up.</p>
+        </div>
+        <div class="illust-caption-right">
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. BLAZING SPARKS -->
+    <div class="illust-piece reveal">
+      <div class="illust-grid-full">
+        <img src="Page 5/canvasathor .gif" alt="Canvasathor Process" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+        <img src="Page 5/Canvasathor Kevin Finish 1.png" alt="Blazing Sparks" class="project-img" loading="lazy">
+      </div>
+      <div class="illust-caption">
+        <div>
+          <p class="illust-title">Blazing Sparks</p>
+          <p class="illust-desc">Glowing lights, late night hangout, and metal tops spinning like the good old days. The two Canvasathor mascots, Vato and Cana, are back at it, celebrating a moment together the way they always have. Above the sparks, small versions of themselves appear, young and fully in the game, feeling the best moments all over again. This artwork is created for Light Up CANVASaTHOR: Five Years of Spark Contest.</p>
+        </div>
+        <div class="illust-caption-right">
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. WINTER IN HOKKAIDO -->
+    <div class="illust-piece reveal">
+      <div class="illust-grid-full">
+        <img src="Page 5/Hokkaido .gif" alt="Hokkaido Process" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+        <img src="Page 5/No Cat Allowed_Kevin Macario Gunawan 1.png" alt="Winter in Hokkaido" class="project-img" loading="lazy">
+      </div>
+      <div class="illust-caption">
+        <div>
+          <p class="illust-title">Winter in Hokkaido</p>
+          <p class="illust-desc">Somewhere in the far north of Japan, three friends and a very opinionated shiba inu settle into the best kind of winter night. Snowy hills, a glowing Christmas tree, a sky train drifting past, and a snow neko being built by them in which dog absolutely did not vote for this. Created for the J-Illust Contest 2024.</p>
+        </div>
+        <div class="illust-caption-right">
+          <div class="software-logos">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. YADNYA KASADA -->
+    <div class="illust-piece reveal">
+      <div class="illust-grid-full">
+        <img src="Page 5/Group 12.png" alt="Yadnya Kasada Sketch" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+        <img src="Page 5/Teh Botol Process .gif" alt="Teh Botol Process" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+        <img src="Page 5/Sosro Slide 2 2.png" alt="Yadnya Kasada Final" class="project-img" loading="lazy">
+      </div>
+      <div class="illust-caption">
+        <div>
+          <p class="illust-title">Yadnya Kasada</p>
+          <p class="illust-desc">Every year, people from different backgrounds gather to climb Mount Bromo together, carrying offerings of crops and farm animals as a way of returning to the mountain what nature has given them. This moment reflects the diversity within the community, where generations, beliefs, and identities come together in a shared act of gratitude. More than a ritual, it is a living tradition that connects people to one another and to the land they depend on. This illustration is developed as a bottle design concept for Teh Botol's Kembali ke Tradisi Asli Indonesia 2026 celebration.</p>
+        </div>
+        <div class="illust-caption-right">
+          <div class="software-logos">
+            <img src="photoshop.jpg" alt="Adobe Photoshop">
+            <img src="clipstudio.jpg" alt="Clip Studio Paint">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Kevin Macario Gunawan</p>
+    <p>Visual Communication Design</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => io.observe(el));
+
+    window.addEventListener('load', () => {
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('visible');
+      });
+    });
+
+    // Lazy GIF
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    const src = img.getAttribute('src');
+    if (src && src.endsWith('.gif')) {
+        img.setAttribute('data-src', src);
+        img.removeAttribute('src');
+    }
+    });
+
+    const gifObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+        const datasrc = e.target.getAttribute('data-src');
+        if (datasrc) {
+            e.target.setAttribute('src', datasrc);
+            gifObserver.unobserve(e.target);
+        }
+        }
+    });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('img[data-src]').forEach(gif => gifObserver.observe(gif));
+  </script>
+</body>
+</html>
