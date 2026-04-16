@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Design — Kevin Macario Gunawan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --off: #e8e4de;
+      --muted: #9a9590;
+      --accent: #c8a97e;
+      --accent-dark: #8b6e4e;
+      --blue: #2E81EC;
+      --gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      background: #ffffff;
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
+      background: var(--blue);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      font-style: italic;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .back-btn {
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .back-btn:hover { color: var(--accent); }
+
+    /* HERO */
+    .project-hero {
+      position: relative;
+      width: calc(100% - 4rem);
+      height: auto;
+      display: block;
+      overflow: hidden;
+      margin-top: 2rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      border-radius: 4px;
+    }
+
+    .project-hero img.bg-banner {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: unset;
+      z-index: 1;
+    }
+
+    .hero-text-overlay {
+      position: absolute;
+      bottom: 6rem;
+      left: 27.5%;
+      transform: translateX(-50%);
+      z-index: 3;
+      text-align: center;
+      padding: 0 2rem;
+      width: 100%;
+      margin-top: 0;
+    }
+    .hero-description {
+      font-size: clamp(0.8rem, 1.6vw, 1rem);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 620px;
+      opacity: 0.92;
+      color: var(--black);
+      text-shadow: 1px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 5vw, 2rem);
+    }
+
+    /* PROJECT HEADER */
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+      border-bottom: 1px solid var(--off);
+      padding-bottom: 3rem;
+    }
+    .info-list { list-style: none; }
+    .info-item { margin-bottom: 2rem; }
+    .info-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.35rem;
+    }
+    .info-value {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.4;
+      display: block;
+    }
+    .software-logos {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .software-logos img {
+      width: 36px; height: 36px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .synopsis-block { margin-bottom: 1.5rem; }
+    .synopsis-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .synopsis-text {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .synopsis-divider {
+      width: 50%;
+      height: 2px;
+      background-color: var(--off);
+      margin: 1.5rem 0;
+    }
+
+    /* SECTIONS */
+    .section-block { margin-bottom: 6rem; }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--black);
+      display: inline-block;
+      padding-bottom: 0.25rem;
+    }
+
+    .project-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* TWO COLUMN LAYOUT */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .two-col-left-wide {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .two-col-right-wide {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    /* TEXT BLOCKS */
+    .text-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .text-label:first-child { margin-top: 0; }
+
+    .text-body {
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .arrow-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .arrow-item::before {
+      content: '→';
+      font-weight: 700;
+      color: var(--black);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* CARD CORNER LABEL */
+    .card-with-label {
+      position: relative;
+    }
+    .card-corner-label {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* NOTES BAR */
+    .notes-bar {
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.6rem 1rem;
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ROTATED ARROW */
+    .arrow-rotated {
+      width: 40px;
+      height: auto;
+      transform: rotate(90deg);
+      display: block;
+      margin: 1rem 0;
+    }
+
+    /* CENTERED LABEL */
+    .center-label {
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--off);
+      background: var(--white);
+    }
+    footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    @media (max-width: 768px) {
+      .project-header { grid-template-columns: 1fr; gap: 2rem; }
+      .two-col { grid-template-columns: 1fr; }
+      .two-col-left-wide { grid-template-columns: 1fr; }
+      .two-col-right-wide { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">KMG.</a>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#playboard">Play Board</a></li>
+      <li><a href="#calendar">Calendar</a></li>
+      <li><a href="#actionwheel">Action Wheel</a></li>
+      <li><a href="#cards">Cards</a></li>
+    </ul>
+    <a href="index.html" class="back-btn">← Back</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="project-hero">
+    <img src="Page 6/Salinan dari Classroom with Superpowers 1 (1) 2.png" alt="Classroom with Superpowers Banner" class="bg-banner">
+    <div class="hero-text-overlay reveal">
+      <p class="hero-description">
+        A 4-player board game turning ethics education into play, built around four superpowered characters and real school scenarios designed for junior high school students in Indonesia.
+      </p>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- PROJECT INFO -->
+    <div class="project-header reveal">
+      <ul class="info-list">
+        <li class="info-item">
+          <span class="info-label">Role</span>
+          <span class="info-value">Gameplay Design<br>Character Design<br>Branding</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Project Span</span>
+          <span class="info-value">5 Months</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Softwares</span>
+        </li>
+        <li class="info-item">
+          <span class="info-label">Target Medium</span>
+          <span class="info-value">Board Game</span>
+        </li>
+      </ul>
+
+      <div class="synopsis">
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Background</h2>
+          <p class="synopsis-text">
+            A decline in ethical behavior among junior high school students in Indonesia has become increasingly visible. Peer pressure, social media, and limited role models during ages 11–15, a critical stage of identity formation, are causing this change. Classroom with Superpowers acts as a response to that gap, turning ethics education into something students actually want to engage with.
+          </p>
+        </div>
+        <div class="synopsis-divider"></div>
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Design Objective</h2>
+          <p class="synopsis-text">
+            To design an interactive medium that makes ethics feel relevant and fun, letting junior high school students experience the real weight of their choices through scenarios, consequences, and rewards.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME OVERVIEW -->
+    <section class="section-block reveal" id="overview">
+      <h2 class="section-title">Game Overview</h2>
+      <img src="Page 6/Group 13.png" alt="Game Overview" class="project-img" style="margin-bottom: 2rem;">
+
+      <div class="two-col">
+        <div>
+          <p class="text-label">Game Concept</p>
+          <p class="text-body">Classroom with Superpowers simulates junior high school life through everyday interactions, where ethical actions become the key to winning. Illustrated scenarios that grow from simple to complex help players build long-term ethical habits through repetition and in-game consequences.</p>
+        </div>
+        <div>
+          <p class="text-label">Goal</p>
+          <p class="text-body">The goal of the game is to perform as many ethical actions as possible to earn in-game points called "appreciation stars", which represent how ethical behavior makes others appreciate you and see you as a good person.</p>
+          <p class="text-label">Win Conditions</p>
+          <div class="arrow-item">Earn 24 Appreciation Stars</div>
+          <div class="arrow-item">Obtain the most appreciation stars in the end of the calendar</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section-block reveal" id="research">
+      <h2 class="section-title">Research</h2>
+      <img src="Page 6/Print Riset Poster Exdes Kevin 1.png" alt="Research Poster" class="project-img">
+    </section>
+
+    <!-- VALUES -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Values</h2>
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (14) 1.png" alt="Game Values" class="project-img">
+    </section>
+
+    <!-- PLAY BOARD -->
+    <section class="section-block reveal" id="playboard">
+      <h2 class="section-title">Play Board</h2>
+      <img src="Page 6/Board For My BOard game 1.png" alt="Play Board" class="project-img" style="margin-bottom: 2rem;">
+
+      <div class="two-col">
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (17) 3.png" alt="Board Detail" class="project-img" loading="lazy">
+        <div>
+          <p class="text-label">Idea</p>
+          <p class="text-body">The board game takes place in a school setting to help the target audience easily visualize and relate to it, with six different illustrated navigable areas, including the school hallway.</p>
+          <p class="text-label">Moving Rules</p>
+          <p class="text-body">Follow the navigational line to move based on the dice. Upon entering room starts with the black plot, and it is optional depending on their strategy to go there or not. Once they are in they have to follow the track of the room.</p>
+        </div>
+      </div>
+
+      <!-- Detention row -->
+      <div class="two-col" style="margin-top: 2rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (17) 2.png" alt="Detention Room" class="project-img" loading="lazy" style="flex: 1;">
+          <img src="Page 6/Polygon 4.png" alt="Arrow" loading="lazy" style="width: 32px; height: auto; flex-shrink: 0;">
+          <p style="font-size: 0.9rem; color: #444; line-height: 1.7; flex: 1;">This is the detention room, where players can only enter if they commit serious unethical actions caused by the action wheel on the next pages.</p>
+        </div>
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (17) 1.png" alt="Board Section" class="project-img" loading="lazy" style="max-width: 60%; margin: 0 auto;">
+      </div>
+    </section>
+
+    <!-- SCHOOL CALENDAR -->
+    <section class="section-block reveal" id="calendar">
+      <h2 class="section-title">School Calendar</h2>
+      <div class="two-col">
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (6) 1.png" alt="School Calendar" class="project-img" loading="lazy">
+        <div>
+          <p class="text-label">Idea</p>
+          <p class="text-body">Functioning as a game limitation, this school calendar tracks daily actions across 20 weekdays. At the end, players reflect on whether their student showed more ethical or unethical behavior throughout the month.</p>
+          <p class="text-label">How Does It Work</p>
+          <p class="text-body">Cards collected are placed on the calendar from day one to twenty and cannot be reused, creating strategic choices. The player with the most stars when the calendar is full wins.</p>
+          <div style="display: flex; align-items: flex-start; gap: 1rem; margin-top: 1rem;">
+            <img src="Page 6/Polygon 4.png" alt="Arrow" loading="lazy" style="width: 24px; height: auto; flex-shrink: 0; margin-top: 0.25rem;">
+            <p style="font-size: 0.9rem; color: #444; line-height: 1.7;">Obtained cards are put in the calendar both ethical and unethical up to 20 days.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION WHEEL -->
+    <section class="section-block reveal" id="actionwheel">
+      <h2 class="section-title">Action Wheel</h2>
+      <div class="two-col">
+        <div>
+          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (7) 1.png" alt="Action Wheel" class="project-img" loading="lazy">
+        </div>
+        <div>
+          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (18) 1.png" alt="Action Wheel Detail" loading="lazy" style="width: 240px; height: auto; margin-left: 30%;">
+          <p class="text-label">Idea</p>
+          <p class="text-body">The wheel represents moments where students invite others into an activity together, with outcomes that add or subtract appreciation stars, or move players to a new spot. Succeed or fail, everyone shares the result.</p>
+          <p class="text-label">How Does It Work</p>
+          <p class="text-body">Before spinning, the player chooses one to three others to join depending on where the wheel lands. Selected players cannot avoid the outcome, and the effect applies to everyone involved.</p>
+          <p class="text-label">Careful</p>
+          <p class="text-body">Landing on detention means skipping two turns for self reflection. Leave early by giving up two stars or rolling a six, otherwise wait it out before returning to the classroom.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETHICAL CARDS -->
+    <section class="section-block reveal" id="cards">
+      <h2 class="section-title">Ethical Cards</h2>
+      <div class="two-col">
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (20) 1.png" alt="Ethical Cards" class="project-img" loading="lazy">
+        <div>
+          <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (20) 2.png" alt="Ethical Action Label" loading="lazy" style="width: 240px; height: auto; margin-right: 30%; margin-top: -5rem;">
+          </div>
+          <p class="text-label">Idea</p>
+          <p class="text-body">Ethical cards present real life school scenarios across different rooms, giving players relatable examples through engaging visuals that reflect the four principles of ethics, integrity, empathy, responsibility, and respect in everyday school life.</p>
+          <p class="text-label">How Does It Work</p>
+          <p class="text-body"> Landing on a green check circle allows the player to draw a white card from their current room, earning appreciation stars from (+1) to (+4). If no cards remain in that room, the player receives none.</p>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--muted); margin: 1.5rem 0 0.75rem; letter-spacing: 0.03em; text-align: center;">Cards below are few samples of originally 24 ethical card divided into 6 places</p>
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (21) 1.png" alt="Unethical Cards Samples" class="project-img" loading="lazy">
+      <div class="notes-bar">NOTES | After taking the card, put it in the school calendar</div>
+    </section>
+
+    <!-- UNETHICAL CARDS -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Unethical Cards</h2>
+      <div class="two-col">
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (22) 1.png" alt="Unethical Cards" class="project-img" loading="lazy">
+        <div>
+          <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (22) 2.png" alt="Unethical Action Label" loading="lazy" style="width: 240px; height: auto; margin-right: 30%; margin-top: -5rem;">
+          </div>
+          <p class="text-label">Idea</p>
+          <p class="text-body">Unethical cards represent negative behaviors every student should avoid, reflecting actions that break all four principles of ethics and carry real consequences, both socially and personally within the game.</p>
+          <p class="text-label">How Does It Work</p>
+          <p class="text-body">Landing on a red cross circle means committing an unethical action, requiring the player to draw a dark themed card from their current room. Consequences reduce appreciation stars from (-1) to (-4).</p>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--muted); margin: 1.5rem 0 0.75rem; letter-spacing: 0.03em; text-align: center;">Cards below are few samples of originally 24 unethical card divided into 6 places</p>
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (23) 1.png" alt="Unethical Cards Samples" class="project-img" loading="lazy">
+      <div class="notes-bar">NOTES | After taking the card, put it in the school calendar</div>
+    </section>
+
+    <!-- SUPERPOWER CARDS — ACTIVE -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Superpower Cards</h2>
+      <div class="two-col">
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 1.png" alt="Superpower Cards Active" class="project-img" loading="lazy">
+        <div>
+          <div style="display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 1rem; margin-right: 30%;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 2.png" alt="Active Type Label" loading="lazy" style="width: 240px; height: auto; margin-top: -5rem;">
+            <p style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.5rem; margin-right: 15%;">Active Type</p>
+          </div>
+          <p class="text-label">Idea</p>
+          <p class="text-body">Active superpower cards represent special abilities players can use to support their decisions and encourage more ethical actions at the right moment throughout the game.</p>
+          <p class="text-label">How Does It Work</p>
+          <p class="text-body">Active cards are used when needed based on each card's function. Two types exist, before cards used prior to rolling the dice, and after cards used following the roll.</p>
+        </div>
+      </div>
+
+      <!-- Event Type -->
+      <div class="two-col" style="margin-top: 2rem;">
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (25) 1.png" alt="Superpower Cards Event" class="project-img" loading="lazy">
+        <div>
+          <div style="display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 1rem; margin-right: 30%;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 2.png" alt="Active Type Label" loading="lazy" style="width: 240px; height: auto; margin-top: -5rem;">
+            <p style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.5rem; margin-right: 15%;">Event Type</p>
+          </div>
+          <p class="text-label">Idea</p>
+          <p class="text-body">Event cards create environmental effects that influence players to move toward certain areas for a better chance at earning more stars.</p>
+          <p class="text-label">How Does It Work</p>
+          <p class="text-body">When activated, players within the indicated area earn an extra (+2) stars for every ethical action performed in that zone.</p>
+          <p class="text-body">Event cards are placed in a designated spot, and any new card drawn replaces the previous one, activating the latest effect immediately.</p>
+          <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1rem; margin-left: 50%;">
+            <img src="Page 6/Polygon 4.png" alt="Arrow" loading="lazy" style="width: 40px; height: auto; transform: rotate(90deg); margin-right: 100%;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (26) 1.png" alt="Event Card Placement" loading="lazy" style="width: 100%; height: auto; margin-top: 0.5rem; margin-right: 100%;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Samples -->
+      <p class="center-label">Cards below are few samples of originally 24 Superpowers Cards (8×2 Active Type & 6×2 Event Type)</p>
+      <p class="center-label">Active Type</p>
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (27) 1.png" alt="Active Superpower Cards Samples" class="project-img" loading="lazy" style="margin-bottom: 2rem;">
+      <p class="center-label">Event Type</p>
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (28) 1.png" alt="Event Superpower Cards Samples" class="project-img" loading="lazy">
+    </section>
+
+    <!-- STARTING SETUP -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Starting Setup</h2>
+      <p class="text-body" style="margin-bottom: 1.5rem;">Place the cards according to their assigned rooms, except for superpowers cards and hallway cards, which have their own designated areas. At the beginning of the game, each player chooses a character and starts with five appreciation stars. The characters are placed on the start box right at the center.</p>
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (32) 1.png" alt="Starting Setup" class="project-img" loading="lazy">
+    </section>
+
+    <!-- PACKAGING DESIGN -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Packaging Design</h2>
+      <img src="Page 6/rntty 1.png" alt="Packaging Front" class="project-img" loading="lazy" style="margin-bottom: 2rem;">
+      <img src="Page 6/rntty 2.png" alt="Packaging Back" class="project-img" loading="lazy" style="margin-bottom: 1.5rem;">
+      <p class="text-body">The packaging design is created to hold all board game components in an attractive and eye catching box that enhances visual appeal and draws attention. Beyond storage, the box serves as the first impression of the game, designed to feel exciting and inviting on a shelf while staying consistent with the brand identity inside.</p>
+    </section>
+
+    <!-- CHARACTER -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Character</h2>
+      <img src="Page 6/13 1.png" alt="Character Overview" class="project-img" loading="lazy" style="margin-bottom: 1.5rem;">
+      <p class="text-body" style="margin-bottom: 2rem;">Each character embodies a principle of ethics, reflecting their personality and bringing the values closer to the players. Their iconic glowing hair and eyes symbolize the superpowers that have been bestowed upon them.</p>
+      <img src="Page 6/14 1.png" alt="Kevin" loading="lazy" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; border-bottom: 1px solid var(--off);">
+      <img src="Page 6/15 1.png" alt="Leona" loading="lazy" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; border-bottom: 1px solid var(--off);">
+      <img src="Page 6/16 1.png" alt="Gloria" loading="lazy" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; border-bottom: 1px solid var(--off);">
+      <img src="Page 6/17 1.png" alt="Donno" loading="lazy" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; border-bottom: 1px solid var(--off); ">
+    </section>
+
+    <!-- BRAND IDENTITY -->
+    <section class="section-block reveal">
+      <h2 class="section-title">Brand Identity</h2>
+
+      <!-- Logo utama + background + clearspace -->
+      <div style="position: relative;">
+        <img src="Page 6/Salinan dari Classroom with Superpowers 1 (19) 1.png" alt="Logo" class="project-img" loading="lazy">
+        
+        <!-- Tulisan overlay kanan atas -->
+        <p style="position: absolute; top: 15%; left: 65%; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);">Logo With Background Color</p>
+        
+        <!-- Logo Clearspace -->
+        <p style="position: absolute; top: 48%; left: 70%; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);">Logo Clearspace</p>
+
+        <!-- Logo Concept — overlay di bawah kiri gambar -->
+        <div style="position: absolute; bottom: 10%; left: 0; width: 50%; padding: 1rem 0;">
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.5rem;">Logo Concept</p>
+          <p style="font-size: 0.9rem; color: #444; line-height: 1.8;">The logo brings together four character silhouettes converging toward a single point, representing unity and a shared ethical journey. Stars highlight achievement, irregular triangles add controlled chaos, and the overall design communicates learning through a playful and fun experience.</p>
+        </div>
+      </div>
+      <!-- Printing + Restrictions -->
+      <div class="two-col" style="margin-top: 2rem; align-items: start;">
+        <div>
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 1rem;">Printing</p>
+          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (29) 1.png" alt="Printing" class="project-img" loading="lazy">
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-top: 3rem; margin-bottom: 0.5rem; text-align: center;">Minimum Size</p>
+          <p style="font-size: 0.9rem; color: #444; line-height: 1.8; text-align: center;">Related to logo readability, the smallest recommended size for use is 3,0 × 1,7 cm or 113 × 64 px.</p>
+        </div>
+        <div>
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 1rem;">Restrictions</p>
+          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (29) 2.png" alt="Restrictions" class="project-img" loading="lazy" style="max-width: 80%;">
+        </div>
+      </div>
+
+      <!-- Typography + Colors -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem;">
+        <div>
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.5rem;">Typography</p>
+          <p style="font-size: 0.9rem; color: #444; line-height: 1.8;">The brand uses bold typography to express its energy and playful spirit. It mirrors the unpredictability of the game while remaining clear and engaging.</p>
+        </div>
+        <div>
+          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.5rem;">Colors</p>
+          <p style="font-size: 0.9rem; color: #444; line-height: 1.8;">Bold and playful colors drive the brand identity, each representing a core ethical value while keeping the visuals lively and the principles of the game present in every element.</p>
+        </div>
+      </div>
+
+      <!-- Typography image -->
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (30) 1.png" alt="Typography" class="project-img" loading="lazy" style="margin-top: 4rem; margin-bottom: 2rem;">
+
+      <!-- Colors image -->
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (31) 1.png" alt="Colors" class="project-img" loading="lazy">
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Kevin Macario Gunawan</p>
+    <p>Visual Communication Design</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => io.observe(el));
+
+    window.addEventListener('load', () => {
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
