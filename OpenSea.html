@@ -20,6 +20,9 @@
       --accent-dark: #8b6e4e;
       --gap: clamp(1.5rem, 4vw, 3rem);
       --blue: #2E81EC;
+      --grad-start: #4182ef;
+      --grad-end: #d3b0ff;
+      --gradient-linear: linear-gradient(135deg, var(--grad-start), var(--grad-end));
     }
 
     html { 
@@ -42,7 +45,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.25rem clamp(1.5rem, 5vw, 4rem);
-      background: var(--blue);
+      background: var(--gradient-linear);
       position: sticky;
       top: 0;
       z-index: 100;
