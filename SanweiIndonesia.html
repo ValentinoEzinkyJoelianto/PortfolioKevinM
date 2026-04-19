@@ -347,6 +347,8 @@
     }
     footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
 
+    .hamburger { display: none; }
+
     @media (max-width: 768px) {
       .project-header { grid-template-columns: 1fr; gap: 2rem; }
       .study-case-grid { grid-template-columns: 1fr; }
@@ -355,6 +357,56 @@
       .character-expression-grid { grid-template-columns: 1fr; }
       .animation-top-grid { grid-template-columns: 1fr; }
       .implementation-grid { grid-template-columns: 1fr; }
+
+      /* Banner lebih besar di HP */
+      .project-hero {
+        height: 50vw;
+      }
+
+      /* Teks kecil di HP */
+      .hero-description {
+        font-size: 0.5rem;
+        margin-top: 7rem;
+      }
+
+      .hero-text-overlay {
+        margin-top: 0;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0; right: 0;
+        width: 70vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #4182ef, #d3b0ff);
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        z-index: 150;
+      }
+      .nav-links.open { display: flex; }
     }
   </style>
 </head>
@@ -370,6 +422,9 @@
         <li><a href="#animation">Animation</a></li>
         <li><a href="#implementation">Implementation</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
     <a href="index.html" class="back-btn">← Back</a>
     </nav>
 
@@ -490,11 +545,11 @@
 
         <div style="display: grid; grid-template-columns: 1fr 0.83fr; gap: 0;">
         <div style="position: relative;">
-            <p style="position: absolute; top: 8rem; left: 0; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700;">Sanhao <span style="color: var(--black);">(三好)</span></p>
+            <p style="position: relative; top: 0rem; left: 0; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700;">Sanhao <span style="color: var(--black);"><br>(三好)</span></p>
             <img src="Page 4/Character 2 (Besar) 1.png" alt="Sanhao" class="project-img">
         </div>
         <div style="position: relative;">
-            <p style="position: absolute; top: 0; right: 0; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; text-align: right;">Weiming <span style="color: var(--black);">(薇明)</span></p>
+            <p style="position: relative; top: 0; right: 0; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; text-align: right;">Weiming <span style="color: var(--black);">(薇明)</span></p>
             <img src="Page 4/Character 1 (Besar) 1.png" alt="Weiming" class="project-img">
         </div>
         </div>
@@ -517,7 +572,7 @@
     <section class="section-block reveal" id="animation">
     <h2 class="section-title">Animation</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; justify-items: center; margin-top: -4rem;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; justify-items: center; margin-top: 0rem;">
         <img src="Page 4/Sanwei Two_.gif" alt="Sanwei Duo Animation" class="project-img">
         <img src="Page 4/sanwei background putih1.gif" alt="Sanwei Animation Center" class="project-img">
         <img src="Page 4/Sanwei character 1 gifski.gif" alt="Sanwei Character 1 Animation" class="project-img">
@@ -579,6 +634,19 @@
     }, { threshold: 0.2 });
 
     gifs.forEach(gif => gifObserver.observe(gif));
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
   </script>
 </body>
 </html>

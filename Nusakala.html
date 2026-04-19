@@ -279,12 +279,64 @@
     }
     footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
 
+    .hamburger { display: none; }
+
     @media (max-width: 768px) {
       .project-header { grid-template-columns: 1fr; gap: 2rem; }
       .main-concept-grid { grid-template-columns: 1fr; }
       .exploration-grid { grid-template-columns: 1fr; }
       .character-grid { grid-template-columns: 1fr; }
       .character-grid-2 { grid-template-columns: 1fr; }
+
+      /* Banner lebih besar di HP */
+      .project-hero {
+        height: 45vw;
+      }
+
+      /* Teks kecil di HP */
+      .hero-description {
+        font-size: 0.6rem;
+        margin-top: 6rem;
+      }
+
+      .hero-text-overlay {
+        margin-top: 0;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0; right: 0;
+        width: 70vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #4182ef, #d3b0ff);
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        z-index: 150;
+      }
+      .nav-links.open { display: flex; }
     }
   </style>
 </head>
@@ -299,6 +351,9 @@
       <li><a href="#team">Team</a></li>
       <li><a href="#map">Map</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
     <a href="index.html" class="back-btn">← Back</a>
   </nav>
 
@@ -495,6 +550,19 @@
         el.classList.add('visible');
         }
     });
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
     });
   </script>
 </body>

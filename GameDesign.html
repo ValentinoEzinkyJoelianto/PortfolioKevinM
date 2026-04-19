@@ -24,7 +24,7 @@
       --gradient-linear: linear-gradient(135deg, var(--grad-start), var(--grad-end));
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 
     body {
       background: #ffffff;
@@ -83,8 +83,10 @@
     .project-hero {
       position: relative;
       width: calc(100% - 4rem);
-      height: auto;
-      display: block;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       margin-top: 2rem;
       margin-left: 2rem;
@@ -93,22 +95,23 @@
     }
 
     .project-hero img.bg-banner {
-      position: relative;
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: unset;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
       z-index: 1;
     }
 
     .hero-text-overlay {
-      position: absolute;
-      bottom: 6rem;
-      left: 0;
-      right: 0;
+      position: relative;
       z-index: 3;
       text-align: center;
       padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 25rem;
     }
 
     .hero-description {
@@ -319,6 +322,7 @@
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.8s ease, transform 0.8s ease;
+      min-height: 1px;
     }
     .reveal.visible { opacity: 1; transform: none; }
 
@@ -333,11 +337,164 @@
     }
     footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
 
+    .hamburger { display: none; }
+
+    /* =====================================================================
+       MOBILE RESPONSIVE RULES 
+       ===================================================================== */
     @media (max-width: 768px) {
       .project-header { grid-template-columns: 1fr; gap: 2rem; }
-      .two-col { grid-template-columns: 1fr; }
-      .two-col-left-wide { grid-template-columns: 1fr; }
-      .two-col-right-wide { grid-template-columns: 1fr; }
+      
+      /* Biarkan section biasa stack ke bawah (1 kolom) JIKA BUKAN keep-pc-layout */
+      .two-col:not(.keep-pc-layout .two-col) { grid-template-columns: 1fr; }
+      .two-col-left-wide:not(.keep-pc-layout .two-col-left-wide) { grid-template-columns: 1fr; }
+      .two-col-right-wide:not(.keep-pc-layout .two-col-right-wide) { grid-template-columns: 1fr; }
+
+      .superpower {
+        width: 60% !important;
+        margin-right: 10% !important;
+      }
+
+      .set1{
+        flex-direction: column !important;
+        text-align: center !important;
+      }
+
+      .arrow{
+        transform: rotate(90deg) !important;
+      }
+
+      /* --- GLOBAL TEXT SIZE --- */
+      #brandidentity > div:first-of-type p {
+        font-size: 2.2vw !important;
+        line-height: 1.5 !important;
+      }
+      
+      /* --- FIX OVERLAP: LOGO CONCEPT (Kiri Bawah) --- */
+      #brandidentity > div:first-of-type > div {
+        position: relative !important; /* Bikin teksnya gak melayang lagi */
+        width: 100% !important; /* Biar panjang teksnya pas 1 layar */
+        padding: 0 !important;
+        bottom: auto !important; /* Matikan efek bottom absolute */
+        left: 0 !important;
+        margin-top: 3% !important; /* Jarak antara gambar dan teks konsep */
+      }
+      
+      /* --- FIX POSISI: LOGO WITH BACKGROUND (Atas Kanan) --- */
+      #brandidentity > div:first-of-type > p:nth-of-type(1) {
+        top: -10% !important; 
+        left: 53% !important; /* Tarik agak ke kiri biar gak mentok (awalnya 65%) */
+        width: 45% !important; /* Kasih jatah ruang untuk teks */
+        text-align: center !important; 
+        margin: 0 !important;
+      }
+      
+      /* --- FIX POSISI: LOGO CLEARSPACE (Tengah Kanan) --- */
+      #brandidentity > div:first-of-type > p:nth-of-type(2) {
+        top: 22% !important; /* Atur naik turunnya dari sini */
+        left: 55% !important; /* Timpa left: 70% bawaan HTML biar bisa gerak */
+        width: 45% !important;
+        text-align: center !important;
+        margin: 0 !important;
+      }
+
+      /* Banner lebih besar di HP */
+      .project-hero {
+        height: 50vw;
+      }
+      /* Teks kecil di HP */
+      .hero-description {
+        font-size: 0.5rem;
+        margin-top: 7rem;
+      }
+      .hero-text-overlay {
+        margin-top: 0;
+      }
+
+      /* --------------------------------------------------------
+         SCALING KHUSUS SECTION TAMPILAN PC (keep-pc-layout)
+         -------------------------------------------------------- */
+      .keep-pc-layout {
+        margin-bottom: 8vw !important; /* Kurangi gap antar section */
+      }
+      
+      /* Paksa tetap 2 kolom persis seperti PC, kecilkan gap */
+      .keep-pc-layout .two-col {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 3vw !important;
+        align-items: start !important;
+      }
+      .keep-pc-layout .two-col-left-wide {
+        grid-template-columns: 1.5fr 1fr !important;
+        gap: 3vw !important;
+      }
+      .keep-pc-layout .two-col-right-wide {
+        grid-template-columns: 1fr 1.5fr !important;
+        gap: 3vw !important;
+      }
+
+      /* Scale text down menggunakan viewport width (vw) */
+      .keep-pc-layout .section-title {
+        font-size: 5vw !important;
+        margin-bottom: 4vw !important;
+      }
+      .keep-pc-layout .text-label,
+      .keep-pc-layout .center-label {
+        font-size: 2.2vw !important;
+        margin-bottom: 1vw !important;
+        margin-top: 2vw !important;
+      }
+      .keep-pc-layout .text-body,
+      .keep-pc-layout p {
+        font-size: 2.2vw !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.5vw !important;
+      }
+      .keep-pc-layout .arrow-item {
+        font-size: 2.2vw !important;
+        gap: 1vw !important;
+        margin-bottom: 1vw !important;
+      }
+      .keep-pc-layout .notes-bar {
+        font-size: 2.2vw !important;
+        padding: 1.5vw 2.5vw !important;
+        margin-top: 2vw !important;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 200;
+      }
+      .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+      .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .hamburger.open span:nth-child(2) { opacity: 0; }
+      .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0; right: 0;
+        width: 70vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #4182ef, #d3b0ff);
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        z-index: 150;
+      }
+      .nav-links.open { display: flex; }
     }
   </style>
 </head>
@@ -352,11 +509,17 @@
       <li><a href="#calendar">Calendar</a></li>
       <li><a href="#actionwheel">Action Wheel</a></li>
       <li><a href="#cards">Cards</a></li>
+      <li><a href="#setup">Setup</a></li>
+      <li><a href="#packaging">Packaging</a></li>
+      <li><a href="#character">Character</a></li>
+      <li><a href="#brandidentity">Brand Identity</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
     <a href="index.html" class="back-btn">← Back</a>
   </nav>
 
-  <!-- HERO -->
   <div class="project-hero">
     <img src="Page 6/Salinan dari Classroom with Superpowers 1 (1) 2.png" alt="Classroom with Superpowers Banner" class="bg-banner">
     <div class="hero-text-overlay reveal">
@@ -368,11 +531,10 @@
 
   <main class="container">
 
-    <!-- PROJECT INFO -->
     <div class="project-header reveal">
       <ul class="info-list">
         <li class="info-item">
-          <span class="info-label">Role</span>
+          <span class="info-label">Scope</span>
           <span class="info-value">Gameplay Design<br>Character Design<br>Branding</span>
         </li>
         <li class="info-item">
@@ -406,10 +568,16 @@
             To design an interactive medium that makes ethics feel relevant and fun, letting junior high school students experience the real weight of their choices through scenarios, consequences, and rewards.
           </p>
         </div>
+        <div class="synopsis-divider"></div>
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Insight</h2>
+          <p class="synopsis-text">
+            Designing for education showed me that the message only lands when the experience feels genuinely enjoyable. Making something fun and making something meaningful are not opposites, and finding that balance was the real design challenge here
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- GAME OVERVIEW -->
     <section class="section-block reveal" id="overview">
       <h2 class="section-title">Game Overview</h2>
       <img src="Page 6/Group 13.png" alt="Game Overview" class="project-img" style="margin-bottom: 2rem;">
@@ -429,20 +597,17 @@
       </div>
     </section>
 
-    <!-- RESEARCH -->
     <section class="section-block reveal" id="research">
       <h2 class="section-title">Research</h2>
       <img src="Page 6/Print Riset Poster Exdes Kevin 1.png" alt="Research Poster" class="project-img">
     </section>
 
-    <!-- VALUES -->
     <section class="section-block reveal">
       <h2 class="section-title">Values</h2>
       <img src="Page 6/Salinan dari Classroom with Superpowers 1 (14) 1.png" alt="Game Values" class="project-img">
     </section>
 
-    <!-- PLAY BOARD -->
-    <section class="section-block reveal" id="playboard">
+    <section class="section-block reveal keep-pc-layout" id="playboard">
       <h2 class="section-title">Play Board</h2>
       <img src="Page 6/Board For My BOard game 1.png" alt="Play Board" class="project-img" style="margin-bottom: 2rem;">
 
@@ -456,18 +621,16 @@
         </div>
       </div>
 
-      <!-- Detention row -->
       <div class="two-col" style="margin-top: 2rem;">
-        <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;" class="set1">
           <img src="Page 6/Salinan dari Classroom with Superpowers 1 (17) 2.png" alt="Detention Room" class="project-img" loading="lazy" style="flex: 1;">
-          <img src="Page 6/Polygon 4.png" alt="Arrow" loading="lazy" style="width: 32px; height: auto; flex-shrink: 0;">
+          <img src="Page 6/Polygon 4.png" class="arrow" alt="Arrow" loading="lazy" style="width: 5%; height: auto; flex-shrink: 0;">
           <p style="font-size: 0.9rem; color: #444; line-height: 1.7; flex: 1;">This is the detention room, where players can only enter if they commit serious unethical actions caused by the action wheel on the next pages.</p>
         </div>
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (17) 1.png" alt="Board Section" class="project-img" loading="lazy" style="max-width: 60%; margin: 0 auto;">
       </div>
     </section>
 
-    <!-- SCHOOL CALENDAR -->
     <section class="section-block reveal" id="calendar">
       <h2 class="section-title">School Calendar</h2>
       <div class="two-col">
@@ -485,15 +648,14 @@
       </div>
     </section>
 
-    <!-- ACTION WHEEL -->
-    <section class="section-block reveal" id="actionwheel">
+    <section class="section-block reveal keep-pc-layout" id="actionwheel">
       <h2 class="section-title">Action Wheel</h2>
       <div class="two-col">
         <div>
           <img src="Page 6/Salinan dari Classroom with Superpowers 1 (7) 1.png" alt="Action Wheel" class="project-img" loading="lazy">
         </div>
         <div>
-          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (18) 1.png" alt="Action Wheel Detail" loading="lazy" style="width: 240px; height: auto; margin-left: 30%;">
+          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (18) 1.png" alt="Action Wheel Detail" loading="lazy" style="width: 45%; height: auto; margin-left: 30%;">
           <p class="text-label">Idea</p>
           <p class="text-body">The wheel represents moments where students invite others into an activity together, with outcomes that add or subtract appreciation stars, or move players to a new spot. Succeed or fail, everyone shares the result.</p>
           <p class="text-label">How Does It Work</p>
@@ -504,14 +666,13 @@
       </div>
     </section>
 
-    <!-- ETHICAL CARDS -->
-    <section class="section-block reveal" id="cards">
+    <section class="section-block reveal keep-pc-layout" id="cards">
       <h2 class="section-title">Ethical Cards</h2>
       <div class="two-col">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (20) 1.png" alt="Ethical Cards" class="project-img" loading="lazy">
         <div>
           <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
-            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (20) 2.png" alt="Ethical Action Label" loading="lazy" style="width: 240px; height: auto; margin-right: 30%; margin-top: -5rem;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (20) 2.png" alt="Ethical Action Label" loading="lazy" style="width: 45%; height: auto; margin-right: 30%; margin-top: -20%;">
           </div>
           <p class="text-label">Idea</p>
           <p class="text-body">Ethical cards present real life school scenarios across different rooms, giving players relatable examples through engaging visuals that reflect the four principles of ethics, integrity, empathy, responsibility, and respect in everyday school life.</p>
@@ -524,14 +685,13 @@
       <div class="notes-bar">NOTES | After taking the card, put it in the school calendar</div>
     </section>
 
-    <!-- UNETHICAL CARDS -->
-    <section class="section-block reveal">
+    <section class="section-block reveal keep-pc-layout" id="unethicalcards">
       <h2 class="section-title">Unethical Cards</h2>
       <div class="two-col">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (22) 1.png" alt="Unethical Cards" class="project-img" loading="lazy">
         <div>
           <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
-            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (22) 2.png" alt="Unethical Action Label" loading="lazy" style="width: 240px; height: auto; margin-right: 30%; margin-top: -5rem;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (22) 2.png" alt="Unethical Action Label" loading="lazy" style="width: 45%; height: auto; margin-right: 30%; margin-top: -20%;">
           </div>
           <p class="text-label">Idea</p>
           <p class="text-body">Unethical cards represent negative behaviors every student should avoid, reflecting actions that break all four principles of ethics and carry real consequences, both socially and personally within the game.</p>
@@ -544,14 +704,13 @@
       <div class="notes-bar">NOTES | After taking the card, put it in the school calendar</div>
     </section>
 
-    <!-- SUPERPOWER CARDS — ACTIVE -->
-    <section class="section-block reveal">
+    <section class="section-block reveal keep-pc-layout" id="superpowercards">
       <h2 class="section-title">Superpower Cards</h2>
       <div class="two-col">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 1.png" alt="Superpower Cards Active" class="project-img" loading="lazy">
         <div>
           <div style="display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 1rem; margin-right: 30%;">
-            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 2.png" alt="Active Type Label" loading="lazy" style="width: 240px; height: auto; margin-top: -5rem;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 2.png" class="superpower" alt="Active Type Label" loading="lazy" style="width: 45%; height: auto; margin-top: -20%;">
             <p style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.5rem; margin-right: 15%;">Active Type</p>
           </div>
           <p class="text-label">Idea</p>
@@ -561,12 +720,11 @@
         </div>
       </div>
 
-      <!-- Event Type -->
       <div class="two-col" style="margin-top: 2rem;">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (25) 1.png" alt="Superpower Cards Event" class="project-img" loading="lazy">
         <div>
           <div style="display: flex; flex-direction: column; align-items: flex-end; margin-bottom: 1rem; margin-right: 30%;">
-            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 2.png" alt="Active Type Label" loading="lazy" style="width: 240px; height: auto; margin-top: -5rem;">
+            <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 2.png" class="superpower" alt="Active Type Label" loading="lazy" style="width: 45%; height: auto; margin-top: -20%;">
             <p style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.5rem; margin-right: 15%;">Event Type</p>
           </div>
           <p class="text-label">Idea</p>
@@ -575,13 +733,12 @@
           <p class="text-body">When activated, players within the indicated area earn an extra (+2) stars for every ethical action performed in that zone.</p>
           <p class="text-body">Event cards are placed in a designated spot, and any new card drawn replaces the previous one, activating the latest effect immediately.</p>
           <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1rem; margin-left: 50%;">
-            <img src="Page 6/Polygon 4.png" alt="Arrow" loading="lazy" style="width: 40px; height: auto; transform: rotate(90deg); margin-right: 100%;">
+            <img src="Page 6/Polygon 4.png" alt="Arrow" loading="lazy" style="width: 10%; height: auto; transform: rotate(90deg); margin-right: 100%;">
             <img src="Page 6/Salinan dari Classroom with Superpowers 1 (26) 1.png" alt="Event Card Placement" loading="lazy" style="width: 100%; height: auto; margin-top: 0.5rem; margin-right: 100%;">
           </div>
         </div>
       </div>
 
-      <!-- Samples -->
       <p class="center-label">Cards below are few samples of originally 24 Superpowers Cards (8×2 Active Type & 6×2 Event Type)</p>
       <p class="center-label">Active Type</p>
       <img src="Page 6/Salinan dari Classroom with Superpowers 1 (27) 1.png" alt="Active Superpower Cards Samples" class="project-img" loading="lazy" style="margin-bottom: 2rem;">
@@ -589,23 +746,20 @@
       <img src="Page 6/Salinan dari Classroom with Superpowers 1 (28) 1.png" alt="Event Superpower Cards Samples" class="project-img" loading="lazy">
     </section>
 
-    <!-- STARTING SETUP -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="setup">
       <h2 class="section-title">Starting Setup</h2>
       <p class="text-body" style="margin-bottom: 1.5rem;">Place the cards according to their assigned rooms, except for superpowers cards and hallway cards, which have their own designated areas. At the beginning of the game, each player chooses a character and starts with five appreciation stars. The characters are placed on the start box right at the center.</p>
       <img src="Page 6/Salinan dari Classroom with Superpowers 1 (32) 1.png" alt="Starting Setup" class="project-img" loading="lazy">
     </section>
 
-    <!-- PACKAGING DESIGN -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="packaging">
       <h2 class="section-title">Packaging Design</h2>
       <img src="Page 6/rntty 1.png" alt="Packaging Front" class="project-img" loading="lazy" style="margin-bottom: 2rem;">
       <img src="Page 6/rntty 2.png" alt="Packaging Back" class="project-img" loading="lazy" style="margin-bottom: 1.5rem;">
       <p class="text-body">The packaging design is created to hold all board game components in an attractive and eye catching box that enhances visual appeal and draws attention. Beyond storage, the box serves as the first impression of the game, designed to feel exciting and inviting on a shelf while staying consistent with the brand identity inside.</p>
     </section>
 
-    <!-- CHARACTER -->
-    <section class="section-block reveal">
+    <section class="section-block reveal" id="character">
       <h2 class="section-title">Character</h2>
       <img src="Page 6/13 1.png" alt="Character Overview" class="project-img" loading="lazy" style="margin-bottom: 1.5rem;">
       <p class="text-body" style="margin-bottom: 2rem;">Each character embodies a principle of ethics, reflecting their personality and bringing the values closer to the players. Their iconic glowing hair and eyes symbolize the superpowers that have been bestowed upon them.</p>
@@ -615,56 +769,51 @@
       <img src="Page 6/17 1.png" alt="Donno" loading="lazy" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; border-bottom: 1px solid var(--off); ">
     </section>
 
-    <!-- BRAND IDENTITY -->
-    <section class="section-block reveal">
+    <section class="section-block reveal keep-pc-layout" id="brandidentity">
       <h2 class="section-title">Brand Identity</h2>
 
-      <!-- Logo utama + background + clearspace -->
       <div style="position: relative;">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (19) 1.png" alt="Logo" class="project-img" loading="lazy">
         
-        <!-- Tulisan overlay kanan atas -->
-        <p style="position: absolute; top: -5%; left: 65%; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);">Logo With Background Color</p>
+        <p class="text-label" style="position: absolute; top: -5%; left: 65%; margin: 0;">Logo With Background Color</p>
         
-        <!-- Logo Clearspace -->
-        <p style="position: absolute; top: 37%; left: 70%; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black);">Logo Clearspace</p>
+        <p class="text-label" style="position: absolute; top: 37%; left: 70%; margin: 0;">Logo Clearspace</p>
 
-        <!-- Logo Concept — overlay di bawah kiri gambar -->
-        <div style="position: absolute; bottom: 10%; left: 0; width: 50%; padding: 1rem 0;">
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.5rem;">Logo Concept</p>
-          <p style="font-size: 0.9rem; color: #444; line-height: 1.8;">The logo brings together four character silhouettes converging toward a single point, representing unity and a shared ethical journey. Stars highlight achievement, irregular triangles add controlled chaos, and the overall design communicates learning through a playful and fun experience.</p>
+        <div style="position: absolute; bottom: 10%; left: 0; width: 50%; padding: 2% 0;">
+          <p class="text-label" style="margin-top: 0;">Logo Concept</p>
+          <p class="text-body">The logo brings together four character silhouettes converging toward a single point, representing unity and a shared ethical journey. Stars highlight achievement, irregular triangles add controlled chaos, and the overall design communicates learning through a playful and fun experience.</p>
         </div>
       </div>
-      <!-- Printing + Restrictions -->
-      <div class="two-col" style="margin-top: 2rem; align-items: start;">
+
+      <div class="two-col" style="margin-top: 6%; align-items: start;">
         <div>
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 1rem;">Printing</p>
+          <p class="text-label" style="margin-top: 0;">Printing</p>
           <img src="Page 6/Salinan dari Classroom with Superpowers 1 (29) 1.png" alt="Printing" class="project-img" loading="lazy">
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-top: 3rem; margin-bottom: 0.5rem; text-align: center;">Minimum Size</p>
-          <p style="font-size: 0.9rem; color: #444; line-height: 1.8; text-align: center;">Related to logo readability, the smallest recommended size for use is 3,0 × 1,7 cm or 113 × 64 px.</p>
+          
+          <div style="margin-top: 15%;">
+            <p class="text-label" style="text-align: center;">Minimum Size</p>
+            <p class="text-body" style="text-align: center;">Related to logo readability, the smallest recommended size for use is 3,0 × 1,7 cm or 113 × 64 px.</p>
+          </div>
         </div>
         <div>
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 1rem;">Restrictions</p>
+          <p class="text-label" style="margin-top: 0;">Restrictions</p>
           <img src="Page 6/Salinan dari Classroom with Superpowers 1 (29) 2.png" alt="Restrictions" class="project-img" loading="lazy" style="max-width: 80%;">
         </div>
       </div>
 
-      <!-- Typography + Colors -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem;">
+      <div class="two-col" style="margin-top: 6%;">
         <div>
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.5rem;">Typography</p>
-          <p style="font-size: 0.9rem; color: #444; line-height: 1.8;">The brand uses bold typography to express its energy and playful spirit. It mirrors the unpredictability of the game while remaining clear and engaging.</p>
+          <p class="text-label">Typography</p>
+          <p class="text-body">The brand uses bold typography to express its energy and playful spirit. It mirrors the unpredictability of the game while remaining clear and engaging.</p>
         </div>
         <div>
-          <p style="font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); margin-bottom: 0.5rem;">Colors</p>
-          <p style="font-size: 0.9rem; color: #444; line-height: 1.8;">Bold and playful colors drive the brand identity, each representing a core ethical value while keeping the visuals lively and the principles of the game present in every element.</p>
+          <p class="text-label">Colors</p>
+          <p class="text-body">Bold and playful colors drive the brand identity, each representing a core ethical value while keeping the visuals lively and the principles of the game present in every element.</p>
         </div>
       </div>
 
-      <!-- Typography image -->
-      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (30) 1.png" alt="Typography" class="project-img" loading="lazy" style="margin-top: 4rem; margin-bottom: 2rem;">
+      <img src="Page 6/Salinan dari Classroom with Superpowers 1 (30) 1.png" alt="Typography" class="project-img" loading="lazy" style="margin-top: 10%; margin-bottom: 5%;">
 
-      <!-- Colors image -->
       <img src="Page 6/Salinan dari Classroom with Superpowers 1 (31) 1.png" alt="Colors" class="project-img" loading="lazy">
     </section>
 
@@ -676,23 +825,47 @@
   </footer>
 
   <script>
+    // ── Reveal on scroll ──────────────────────────────────────────
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
       });
     }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => io.observe(el));
-
     window.addEventListener('load', () => {
       reveals.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          el.classList.add('visible');
-        }
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+      });
+    });
+
+    // ── Hamburger ─────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // ── Semua anchor link: teleport langsung, no smooth ───────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        // Paksa semua visible dulu
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+
+        const navHeight = document.querySelector('nav').offsetHeight;
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 8;
+
+        // Teleport, no smooth
+        window.scrollTo({ top, behavior: 'instant' });
       });
     });
   </script>
