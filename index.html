@@ -661,24 +661,46 @@
       transform-origin: top left;
       width: 200%;
     }
+    .section-about {
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 1rem !important;
+      padding: 1rem !important;
+      align-items: start !important;
+    }
+
+    /* Gambar Kevin jangan kegedean */
+    .section-about > div:nth-child(2) img[alt="Kevin Macario Gunawan"] {
+      width: 300px !important;
+    }
+
+    /* Kolom kanan jangan overflow */
+    .about-right {
+      overflow: hidden !important;
+    }
+
+    /* Teks about jangan terlalu besar */
+    .about-body {
+      font-size: 0.85rem !important;
+      line-height: 1.6 !important;
+    }
+
+    /* Software image jangan kegedean */
+    .section-about img[alt="Softwares"] {
+      width: 60% !important;
+    }
+
+    /* Contact links tetap row */
     .contact-links {
-      flex-direction: column; /* Berubah jadi 3 baris ke bawah */
-      align-items: flex-start; /* Rata kiri */
-      gap: 1.5rem; /* Jarak antar baris */
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
     }
 
-    .contact-item {
-      width: 100%; /* Agar area klik lebih luas di HP */
-    }
-
-    /* Opsional: Memperbesar ikon dan teks sedikit lagi khusus di HP */
-    .contact-text {
-      font-size: 1.4rem; 
-    }
-    
-    .contact-icon {
-      width: 55px;
-      height: 55px;
+    .contact-item { width: 100%; }
+    .contact-text { font-size: 1.4rem; }
+    .contact-icon { width: 55px; height: 55px; }
+    .section-about .about-left div[style*="height: 5px"] {
+      width: 60% !important;
     }
   }
 </style>
@@ -790,14 +812,14 @@
     
     <!-- Software label + garis -->
     <div class="achievements-title" style="margin-bottom: 0.5rem;">SOFTWARES</div>
-    <div style="height: 5px; width: 22%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1.5rem;"></div>
+    <div style="height: 5px; width: 28%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1.5rem;"></div>
 
     <!-- Softwares image -->
     <img src="NEW PORTFOLIO B5 KEVIN.png" alt="Softwares" style="width: 30%; height: auto; display: block; margin-bottom: 2rem;">
     
     <!-- Achievements label + garis -->
     <div class="achievements-title" style="margin-bottom: 0.5rem;">ACHIEVEMENTS</div>
-    <div style="height: 5px; width: 30%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1rem;"></div>
+    <div style="height: 5px; width: 36%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1rem;"></div>
 
     <div class="achievement-item">
       <span class="achievement-num">01</span>
