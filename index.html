@@ -568,7 +568,7 @@
   .contact-item:hover { color: var(--accent-dark); }
 
   .contact-icon {
-    width: 36px; height: 36px;
+    width: 48px; height: 48px;
     border-radius: 50%;
     padding: 2px;
     background: var(--gradient-linear);
@@ -597,7 +597,7 @@
   }
 
   .contact-item:hover .contact-icon svg { stroke: white; }
-  .contact-text { font-size: 0.9rem; letter-spacing: 0.02em; }
+  .contact-text { font-size: 1.6rem; letter-spacing: 0.02em; }
 
   .contact-right {
     flex: 1;
@@ -660,6 +660,25 @@
       transform: scale(0.5);
       transform-origin: top left;
       width: 200%;
+    }
+    .contact-links {
+      flex-direction: column; /* Berubah jadi 3 baris ke bawah */
+      align-items: flex-start; /* Rata kiri */
+      gap: 1.5rem; /* Jarak antar baris */
+    }
+
+    .contact-item {
+      width: 100%; /* Agar area klik lebih luas di HP */
+    }
+
+    /* Opsional: Memperbesar ikon dan teks sedikit lagi khusus di HP */
+    .contact-text {
+      font-size: 1.4rem; 
+    }
+    
+    .contact-icon {
+      width: 55px;
+      height: 55px;
     }
   }
 </style>
@@ -777,7 +796,7 @@
     <img src="NEW PORTFOLIO B5 KEVIN.png" alt="Softwares" style="width: 30%; height: auto; display: block; margin-bottom: 2rem;">
     
     <!-- Achievements label + garis -->
-    <div class="achievements-title" style="margin-bottom: 0.5rem;">ACHIEVEMENTS </div>
+    <div class="achievements-title" style="margin-bottom: 0.5rem;">ACHIEVEMENTS</div>
     <div style="height: 5px; width: 30%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1rem;"></div>
 
     <div class="achievement-item">
@@ -796,8 +815,8 @@
 
   <!-- Center: Kevin image -->
   <div style="position: relative; display: flex; align-items: center; justify-content: center; transform: translateY(3rem);">
-    <img src="NEW PORTFOLIO B5 KEVIN (2).png" alt="Kevin Macario Gunawan" style="width: 100%; height: auto; display: block;">
-    <img src="NEW PORTFOLIO B5 KEVIN (5).png" alt="Anak Panah" style="position: absolute; top: 95%; left: 52%; transform: translate(-50%, -50%); width: 10%; height: auto;">
+    <img src="NEW PORTFOLIO B5 KEVIN (2).png" alt="Kevin Macario Gunawan" style="width: 500px; height: auto; display: block;">
+    <img src="NEW PORTFOLIO B5 KEVIN (5).png" alt="Anak Panah" style="position: absolute; top: 90%; left: 52%; transform: translate(-50%, -50%); width: 10%; height: auto;">
   </div>
 
   <!-- Right: Name + Bio + Lock In -->
@@ -814,22 +833,22 @@
 </section>
 
 <section class="reveal" style="padding: 0 clamp(1.5rem, 5vw, 4rem) 2rem; position: relative;">
-  <div style="position: relative; width: 100%; overflow: hidden;">
+  <div style="position: relative; width: 100%; overflow: show;">
     
     <img src="NEW PORTFOLIO B5 KEVIN (1).png" alt="Character Select" style="width: 100%; height: auto; display: block;">
 
     <img src="NEW PORTFOLIO B5 KEVIN (7).png" alt="Character Focus" 
-         style="position: absolute; 
+         style="position: relative; 
                 top: 50%; 
                 left: 50%; 
-                transform: translate(-50%, -30%) scale(1);
+                transform: translate(-50%, -103%) scale(1);
                 width: 7.75%; 
                 height: auto; 
                 transition: transform 0.4s ease-out; 
                 cursor: pointer; 
                 z-index: 2;"
-         onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'" 
-         onmouseout="this.style.transform='translate(-50%, -30%) scale(1)'">
+         onmouseover="this.style.transform='translate(-50%, -120%) scale(1.1)'" 
+         onmouseout="this.style.transform='translate(-50%, -103%) scale(1)'">
          
   </div>
 </section>
