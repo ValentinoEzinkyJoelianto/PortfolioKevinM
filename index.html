@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kevin Macario Gunawan — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -191,9 +191,9 @@
   .section-about {
     padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 5vw, 4rem);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: var(--gap);
-    align-items: start;
+    align-items: center;
   }
 
   .about-label {
@@ -228,13 +228,13 @@
     color: var(--accent-dark);
   }
 
-  .about-right { padding-top: 2.5rem; }
+  .about-right { padding-top: 0; }
 
   .about-body {
     font-size: clamp(0.95rem, 1.5vw, 1.05rem);
     line-height: 1.85;
     color: #444;
-    margin-bottom: 3rem;
+    margin-bottom: 0;
   }
 
   /* ACHIEVEMENTS */
@@ -615,12 +615,11 @@
 
   /* RESPONSIVE */
   @media (max-width: 700px) {
-    .section-about { grid-template-columns: 1fr; }
-    .section-contact { grid-template-columns: 1fr; }
-    .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .projects-quote { text-align: left; }
-    .hero-title span { -webkit-text-stroke-width: 1.5px; }
-    .cat-bottom-row { grid-template-columns: 1fr; }
+    body {
+      transform: scale(0.5);
+      transform-origin: top left;
+      width: 200%;
+    }
   }
 </style>
 </head>
@@ -726,12 +725,20 @@
 <!-- ABOUT -->
 <section class="section-about reveal" id="about">
   <div class="about-left">
-    <div class="about-label">Greetings</div>
-    <h2 class="about-heading">Visual worlds,<br><em>story-driven</em><br>by design.</h2>
-  </div>
-  <div class="about-right">
-    <p class="about-body">I am a visual communication design student and concept artist focused on creating original characters and immersive worlds. My work blends storytelling, cultural inspiration, and stylized design to build engaging experiences. I develop ideas from concept to refined visuals, aiming to create story-driven worlds for games and visual media.</p>
-    <div class="achievements-title">Achievements</div>
+  <!-- Pensil logo -->
+    <img src="NEW PORTFOLIO B5 KEVIN (4).png" alt="Pencil Logo" style="width: 40px; height: auto; display: block; margin-bottom: 0.75rem;">
+    
+    <!-- Software label + garis -->
+    <div class="achievements-title" style="margin-bottom: 0.5rem;">Softwares</div>
+    <div style="height: 5px; width: 20%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1.5rem;"></div>
+
+    <!-- Softwares image -->
+    <img src="NEW PORTFOLIO B5 KEVIN.png" alt="Softwares" style="width: 30%; height: auto; display: block; margin-bottom: 2rem;">
+    
+    <!-- Achievements label + garis -->
+    <div class="achievements-title" style="margin-bottom: 0.5rem;">Achievements</div>
+    <div style="height: 5px; width: 26%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1rem;"></div>
+
     <div class="achievement-item">
       <span class="achievement-num">01</span>
       <span class="achievement-text">Best Presenter at International Conference on Entrepreneurship (ICOEN) XII, 2025</span>
@@ -745,29 +752,29 @@
       <span class="achievement-text">Runner-up — Andalas Fanart Contest</span>
     </div>
   </div>
-</section>
 
-<!-- SOFTWARE -->
-<section class="section-software reveal">
-  <div class="about-label">Software</div>
-  <div class="software-grid">
-    <div class="software-badge">
-      <img src="clipstudio.jpg" alt="Clip Studio Paint" />
-      Clip Studio Paint
-    </div>
-    <div class="software-badge">
-      <img src="photoshop.jpg" alt="Adobe Photoshop" />
-      Adobe Photoshop
-    </div>
-    <div class="software-badge">
-      <img src="aftereffects.jpg" alt="Adobe After Effects" />
-      Adobe After Effects
-    </div>
-    <div class="software-badge">
-      <img src="live2d.png" alt="Live2D" />
-      Live2D
+  <!-- Center: Kevin image -->
+  <div style="position: relative; display: flex; align-items: center; justify-content: center; transform: translateY(3rem);">
+    <img src="NEW PORTFOLIO B5 KEVIN (2).png" alt="Kevin Macario Gunawan" style="width: 100%; height: auto; display: block;">
+    <img src="NEW PORTFOLIO B5 KEVIN (5).png" alt="Anak Panah" style="position: absolute; top: 95%; left: 52%; transform: translate(-50%, -50%); width: 10%; height: auto;">
+  </div>
+
+  <!-- Right: Name + Bio + Lock In -->
+  <div class="about-right" style="display: flex; flex-direction: column; justify-content: center;">
+    <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.08em; color: var(--blue); margin-bottom: 0.25rem;">Kevin Macario Gunawan</h2>
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--muted); margin-bottom: 2rem; letter-spacing: 0.05em;">Visual Artist & Concept Designer</p>
+    <p class="about-body">Coming from his hometown in Surabaya, Kevin is a Visual Communication Design student at Universitas Ciputra Surabaya with a passion for building worlds, characters, and ideas from scratch. He has worked on several design projects, always making sure his works are not just visually distinct, but also able to present and communicate clearly to the audience. His design works are inspired by the things we encounter in every day life to the rich visual worlds of video games that have shaped his creative perspective.</p>
+    
+    <!-- Lock In button -->
+    <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+      <button id="lockInBtn" onclick="lockIn()" style="background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; padding: 0.5rem 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.2em; cursor: pointer; border-radius: 2px; transition: opacity 0.3s;">LOCK IN</button>
     </div>
   </div>
+</section>
+
+<!-- Character Select -->
+<section class="reveal" style="padding: 0 clamp(1.5rem, 5vw, 4rem) 2rem;">
+  <img src="NEW PORTFOLIO B5 KEVIN (1).png" alt="Character Select" style="width: 100%; height: auto; display: block;">
 </section>
 
 <!-- CONTACT -->
@@ -818,6 +825,30 @@
     const maxScroll = Math.max(0, totalW - visibleW + parseFloat(getComputedStyle(track).paddingLeft) * 2);
     offsets[id] = Math.max(0, Math.min(offsets[id] + dir * cardW, maxScroll));
     track.style.transform = 'translateX(-' + offsets[id] + 'px)';
+  }
+
+  function lockIn() {
+    const btn = document.getElementById('lockInBtn');
+    const section = document.querySelector('.section-about');
+    btn.style.transform = 'scale(0.95)';
+    section.style.filter = 'brightness(1.5)';
+    setTimeout(() => {
+      section.style.filter = 'brightness(1)';
+      btn.style.transform = 'scale(1)';
+      section.style.filter = 'hue-rotate(20deg)';
+      setTimeout(() => {
+        section.style.filter = 'none';
+      }, 150);
+    }, 100);
+  }
+
+  var deviceWidth = screen.width;
+  if (deviceWidth < 1200) {
+    var scale = deviceWidth / 1200;
+    document.querySelector('meta[name="viewport"]').setAttribute(
+      'content', 
+      'width=1200, initial-scale=' + scale
+    );
   }
 </script>
 </body>

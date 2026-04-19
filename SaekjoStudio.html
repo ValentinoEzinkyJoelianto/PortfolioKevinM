@@ -92,7 +92,7 @@
     .project-hero {
       position: relative;
       width: calc(100% - 4rem);
-      height: 90vh;
+      height: 56vw;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -120,7 +120,7 @@
       flex-direction: column;
       align-items: center;
       gap: 1.25rem;
-      margin-top: 25rem;
+      margin-top: 15vw;
     }
 
     .hero-logo {
@@ -136,6 +136,7 @@
       opacity: 0.92;
       text-shadow: none;
       color: #000000;
+      margin-top: 15rem;
     }
 
     /* CONTAINER */
@@ -317,10 +318,36 @@
     footer p { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
 
     @media (max-width: 768px) {
-      .project-header { grid-template-columns: 1fr; gap: 2rem; }
-      .main-concept-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .moodboard-grid { grid-template-columns: 1fr; }
+    .project-header { grid-template-columns: 1fr; gap: 2rem; }
+    .main-concept-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .moodboard-grid { grid-template-columns: 1fr; }
+    .section-block { margin-top: 7rem; }
+
+    div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 3rem"] {
+      grid-template-columns: 1fr !important;
     }
+    div[style*="grid-template-columns: auto 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    div[style*="grid-template-columns: auto 1fr 1fr"] img[style*="width: 225px"] {
+      width: 100% !important;
+    }
+
+    /* Banner lebih besar di HP */
+    .project-hero {
+      height: 80vw;
+    }
+
+    /* Teks kecil di HP */
+    .hero-description {
+      font-size: 0.6rem;
+      margin-top: 12rem;
+    }
+
+    .hero-text-overlay {
+      margin-top: 0;
+    }
+  }
   </style>
 </head>
 <body>
@@ -357,7 +384,7 @@
     <div class="project-header reveal">
       <ul class="info-list">
         <li class="info-item">
-          <span class="info-label">Role</span>
+          <span class="info-label">Scope</span>
           <span class="info-value">Character Design<br>Mascot Design<br>Character Animation</span>
         </li>
         <li class="info-item">
@@ -398,6 +425,15 @@
             To design representative mascots and characters that communicate each Korean
             personal color type clearly, helping Saekjo Studio build a stronger, more
             distinctive brand identity that their audience can connect with.
+          </p>
+        </div>
+
+        <div class="synopsis-divider"></div>
+
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Insight</h2>
+          <p class="synopsis-text">
+            Working with a real client's brand identity taught me how to design within boundaries without losing creativity. The best character work came not from ignoring the brand but from deeply understanding what it already stood for and its purpose
           </p>
         </div>
       </div>
@@ -496,7 +532,7 @@
       </div>
 
       <!-- Summer Final Character Sheet -->
-      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (10) 1.png" alt="Summer Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: -7.5rem;">
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (10) 1.png" alt="Summer Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: -7rem;">
     </section>
 
     <!-- MASCOT DESIGN — AUTUMN -->
@@ -542,7 +578,7 @@
       </div>
 
       <!-- Winter Final Character Sheet -->
-      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (14) 1.png" alt="Winter Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: -9rem;">
+      <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (14) 1.png" alt="Winter Character Sheet Final" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: -7rem;">
     </section>
 
     <!-- MASCOT DESIGN — SIDEKICK -->
@@ -674,7 +710,7 @@
     <!-- ANIMATION -->
     <section class="section-block reveal" id="animation">
       <h2 class="section-title">Animation</h2>
-      <img src="Page 2/Saekjo Gif.gif" alt="Character Animation" class="project-img" style="border-bottom: 2px solid #ccc; margin-top: -3rem;">
+      <img src="Page 2/Saekjo Gif.gif" alt="Character Animation" class="project-img" style="border-bottom: 2px solid #ccc; margin-top: 0rem;">
     </section>
 
   </main>

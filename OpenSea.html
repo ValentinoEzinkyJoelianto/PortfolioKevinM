@@ -321,8 +321,21 @@
     }
 
     @media (max-width: 768px) {
-      .exploration-grid {
-        grid-template-columns: 1fr; 
+      .magnify-wrapper {
+        width: 100% !important;
+        left: 0 !important;
+        transform: none !important;
+      }
+      .project-header { grid-template-columns: 1fr; gap: 2rem; }
+      .moodboard-grid { grid-template-columns: 1fr; }
+      
+      .project-hero {
+        height: 40vh;
+      }
+      
+      .hero-description {
+        font-size: 0.5rem;
+        margin-top: 10rem;
       }
     }
 
@@ -387,7 +400,7 @@
       
       <ul class="info-list">
         <li class="info-item">
-          <span class="info-label">Role</span>
+          <span class="info-label">Scope</span>
           <span class="info-value">Character Design<br>Environment Design<br>World Building</span>
         </li>
         <li class="info-item">
@@ -421,6 +434,15 @@
           <h2 class="synopsis-title">Design Objective</h2>
           <p class="synopsis-text">
             To develop a complete and cohesive IP from the ground up, building a believable world with its own lore, rules, and visual identity. Every design decision, from characters to environments, is built to communicate the same universe consistently.
+          </p>
+        </div>
+
+        <div class="synopsis-divider"></div>
+        
+        <div class="synopsis-block">
+          <h2 class="synopsis-title">Insight</h2>
+          <p class="synopsis-text">
+            Building a complete IP from scratch taught me that strong world building starts with rules, not visuals. Every design decision became easier once the story, the logic, and the world's identity were clearly defined first.
           </p>
         </div>
       </div>
@@ -494,7 +516,7 @@
     <section class="section-block reveal" id="worldbuilding">
       <h2 class="section-title">World Building</h2>
       
-      <div class="magnify-wrapper" style="width: 1000px; position: relative; left: 50%; transform: translateX(-50%); background: transparent;" onmousemove="moveMagnifier(event)" onmouseleave="resetMagnifier(event)">
+      <div class="magnify-wrapper" style="width: 100%; position: relative; background: transparent;" onmousemove="moveMagnifier(event)" onmouseleave="resetMagnifier(event)">
         <img src="Page 1/World Building Scenery 1 → upioCEpwbsdd0CUYqUw2ow0U.png.png" alt="Environment Concept" class="magnify-image" style="width: 100%; object-fit: contain;">
       </div>
 
