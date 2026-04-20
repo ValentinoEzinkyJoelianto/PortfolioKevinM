@@ -35,6 +35,21 @@
       line-height: 1.6;
     }
 
+    .magnify-wrapper {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      cursor: zoom-in;
+    }
+    .magnify-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.1s ease-out;
+      transform-origin: center center;
+    }
+    .magnify-wrapper:hover .magnify-image { transform: scale(1.5); }
+
     /* NAV */
     nav {
       display: flex;
@@ -579,7 +594,9 @@
 
     <section class="section-block reveal" id="overview">
       <h2 class="section-title">GAME OVERVIEW</h2>
-      <img src="Page 6/Group 13.png" alt="Game Overview" class="project-img" style="margin-bottom: 2rem;">
+      <div class="magnify-wrapper" style="margin-bottom: 2rem;">
+        <img src="Page 6/Group 13.png" alt="Game Overview" class="magnify-image">
+      </div>
 
       <div class="two-col">
         <div>
@@ -599,11 +616,17 @@
     <section class="section-block reveal" id="research">
       <h2 class="section-title">RESEARCH</h2>
       <img src="Page 6/Print Riset Poster Exdes Kevin 1.png" alt="Research Poster" class="project-img">
+      <p class="text-body" style="margin-top: 1.5rem;">
+        This poster is the summary of the early research phase to dig into the real conditions and issues surrounding the target user, combining data and direct interviews to build a grounded understanding of the problem and ensure the design solution idea is based on actual needs rather than assumptions.
+      </p>
     </section>
 
     <section class="section-block reveal">
       <h2 class="section-title">VALUES</h2>
       <img src="Page 6/Salinan dari Classroom with Superpowers 1 (14) 1.png" alt="Game Values" class="project-img">
+      <p class="text-body" style="margin-top: 1.5rem;">
+        The design teaches ethics by integrating the four principles—integrity, empathy, responsibility, and respect into game elements, ensuring students act ethically every day.
+      </p>
     </section>
 
     <section class="section-block reveal keep-pc-layout" id="playboard">
@@ -647,11 +670,11 @@
       </div>
     </section>
 
-    <section class="section-block reveal keep-pc-layout" id="actionwheel">
+    <section class="section-block reveal" id="actionwheel">
       <h2 class="section-title">ACTION WHEEL</h2>
       <div class="two-col">
         <div>
-          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (7) 1.png" alt="Action Wheel" class="project-img" loading="lazy">
+          <img src="Page 6/Salinan dari Classroom with Superpowers 1 (7) 1.png" alt="Action Wheel" class="project-img" loading="lazy" style="height: 100%;">
         </div>
         <div>
           <img src="Page 6/Salinan dari Classroom with Superpowers 1 (18) 1.png" alt="Action Wheel Detail" loading="lazy" style="width: 45%; height: auto; margin-left: 30%;">
@@ -665,7 +688,7 @@
       </div>
     </section>
 
-    <section class="section-block reveal keep-pc-layout" id="cards">
+    <section class="section-block reveal" id="cards">
       <h2 class="section-title">ETHICAL CARDS</h2>
       <div class="two-col">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (20) 1.png" alt="Ethical Cards" class="project-img" loading="lazy">
@@ -684,7 +707,7 @@
       <div class="notes-bar">NOTES | After taking the card, put it in the school calendar</div>
     </section>
 
-    <section class="section-block reveal keep-pc-layout" id="unethicalcards">
+    <section class="section-block reveal" id="unethicalcards">
       <h2 class="section-title">UNETHICAL CARDS</h2>
       <div class="two-col">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (22) 1.png" alt="Unethical Cards" class="project-img" loading="lazy">
@@ -703,7 +726,7 @@
       <div class="notes-bar">NOTES | After taking the card, put it in the school calendar</div>
     </section>
 
-    <section class="section-block reveal keep-pc-layout" id="superpowercards">
+    <section class="section-block reveal" id="superpowercards">
       <h2 class="section-title">SUPERPOWER CARDS</h2>
       <div class="two-col">
         <img src="Page 6/Salinan dari Classroom with Superpowers 1 (24) 1.png" alt="Superpower Cards Active" class="project-img" loading="lazy">
@@ -865,6 +888,17 @@
 
         // Teleport, no smooth
         window.scrollTo({ top, behavior: 'instant' });
+      });
+    });
+
+    document.querySelectorAll('.magnify-wrapper').forEach(w => {
+      w.addEventListener('mousemove', e => {
+        const img = w.querySelector('.magnify-image');
+        const rect = w.getBoundingClientRect();
+        img.style.transformOrigin = `${((e.clientX - rect.left) / rect.width) * 100}% ${((e.clientY - rect.top) / rect.height) * 100}%`;
+      });
+      w.addEventListener('mouseleave', () => {
+        setTimeout(() => { w.querySelector('.magnify-image').style.transformOrigin = 'center center'; }, 100);
       });
     });
   </script>

@@ -56,13 +56,11 @@
       color: var(--white);
       text-decoration: none;
     }
-
     .nav-links {
       display: flex;
       gap: 2rem;
       list-style: none;
     }
-
     .nav-links a {
       text-decoration: none;
       font-size: 0.75rem;
@@ -72,9 +70,7 @@
       color: var(--white);
       transition: color 0.3s;
     }
-
     .nav-links a:hover { color: var(--accent); }
-
     .back-btn {
       text-decoration: none;
       font-size: 0.75rem;
@@ -89,23 +85,19 @@
     .stacked-image-container {
       position: relative;
       width: 100%;
-      margin-bottom: 2rem; /* Jarak dengan elemen di bawahnya */
+      margin-bottom: 2rem;
     }
-
     .stacked-image-container .layer-bawah {
       width: 100%;
       height: auto;
       display: block;
     }
-
     .stacked-image-container .layer-atas {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* Memastikan gambar atas menyesuaikan bentuk tanpa gepeng */
-      z-index: 2; /* Memaksa layer ini berada di atas */
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      z-index: 2;
     }
 
     .magnify-wrapper {
@@ -115,7 +107,6 @@
       position: relative;
       cursor: zoom-in;
     }
-
     .magnify-image {
       width: 100%;
       height: auto;
@@ -123,10 +114,7 @@
       transition: transform 0.1s ease-out; 
       transform-origin: center center;
     }
-
-    .magnify-wrapper:hover .magnify-image {
-      transform: scale(1.5);
-    }
+    .magnify-wrapper:hover .magnify-image { transform: scale(1.5); }
 
     .project-hero {
       position: relative;
@@ -141,21 +129,16 @@
       margin-right: 2rem;
       border-radius: 4px;
     }
-    
     .project-hero img.bg-banner {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
       z-index: 1;
     }
-
-    /* GAYA UNTUK TULISAN DI TENGAH GAMBAR */
     .hero-text-overlay {
       position: relative;
-      z-index: 2; /* Teks di lapisan atas */
+      z-index: 2;
       text-align: center;
       color: #ffffff;
       padding: 0 1.5rem;
@@ -181,14 +164,13 @@
       text-align: center;
       opacity: 0.95;
       text-shadow: 1px 2px 5px rgba(0,0,0,0.6);
-      margin-top: 25rem
+      margin-top: 25rem;
     }
 
     .project-img {
       width: 100%;
       height: auto;
       display: block;
-      /* Box-shadow dan border-radius DIHAPUS agar gambar tidak kelihatan di-wrap kotak */
     }
 
     /* CONTAINER */
@@ -207,7 +189,6 @@
       border-bottom: 1px solid var(--off);
       padding-bottom: 3rem;
     }
-    
     .info-list { list-style: none; }
     .info-item { margin-bottom: 2rem; }
     .info-label {
@@ -224,20 +205,16 @@
       line-height: 1.4;
       display: block;
     }
-    
     .software-logos {
       display: flex;
       gap: 0.5rem;
       margin-top: 0.5rem;
     }
     .software-logos img {
-      width: 36px; 
-      height: 36px;
+      width: 36px; height: 36px;
       object-fit: contain;
       border-radius: 4px;
     }
-
-    /* SYNOPSIS RIGHT COLUMN */
     .synopsis-block { margin-bottom: 1.5rem; }
     .synopsis-title {
       font-family: 'Inter', sans-serif;
@@ -270,36 +247,17 @@
       padding-bottom: 0.25rem;
     }
 
-    /* IMAGE PLACEHOLDERS */
-    .img-placeholder {
-      background: #f0f0f0;
-      border: 1px dashed #ccc;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-    }
-    .img-placeholder img { width: 100%; height: auto; display: block; }
-
-    /* ========================================= */
-    /* MOODBOARD STYLES */
-    /* ========================================= */
     .moodboard-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem 2rem; 
     }    
-    
     .moodboard-item {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
-
     .moodboard-heading {
       font-family: 'Inter', sans-serif;
       font-size: 1.15rem;
@@ -307,40 +265,219 @@
       color: var(--black);
       margin-bottom: 0.75rem;
     }
-
     .moodboard-caption {
       font-size: 0.85rem;
       color: var(--muted);
       margin-top: 0.75rem;
     }
-
     .exploration-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
     }
 
-    @media (max-width: 768px) {
-      .magnify-wrapper {
-        width: 100% !important;
-        left: 0 !important;
-        transform: none !important;
-      }
-      .project-header { grid-template-columns: 1fr; gap: 2rem; }
-      .moodboard-grid { grid-template-columns: 1fr; }
-      
-      .project-hero {
-        height: 40vh;
-      }
-      
-      .hero-description {
-        font-size: 0.5rem;
-        margin-top: 10rem;
-      }
+    /* ===== STORY TERMINAL ===== */
+    .story-header-bar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .story-logo-text {
+      font-family: 'Inter', Courier, monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      border: 2px solid var(--muted);
+      padding: 0.25rem 0.5rem;
+      user-select: none;
     }
 
-    .character-showcase { margin-top: 2rem; }
-    .character-showcase .img-placeholder { aspect-ratio: 21/9; margin-bottom: 2rem; }
+    .story-terminal {
+      display: grid;
+      grid-template-columns: 155px 1fr;
+      background: #d6d1ca;
+      min-height: 380px;
+      border: 1px solid #b8b3ac;
+    }
+
+    /* Sidebar */
+    .story-sidebar {
+      background: #c9c4bc;
+      border-right: 1px solid #b0aaa2;
+      padding: 2rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .story-file {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', Courier, monospace;
+      font-size: 0.78rem;
+      color: #6a6560;
+      text-align: left;
+      padding: 0.4rem 1rem 0.4rem 1.1rem;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    .story-file:hover { color: #111; }
+    .story-file.active {
+      color: #111;
+      font-weight: 700;
+    }
+
+    .story-arrow {
+      font-size: 0.55rem;
+      opacity: 0;
+      flex-shrink: 0;
+      transition: opacity 0.15s;
+    }
+    .story-file.active .story-arrow { opacity: 1; }
+
+    .story-sidebar-spacer { flex: 1; }
+
+    .story-deleted {
+      font-family: 'Inter', Courier, monospace;
+      font-size: 0.72rem;
+      color: #9a9590;
+      padding: 1.2rem 1rem 0;
+      line-height: 1.5;
+    }
+
+    /* Content pane */
+    .story-content {
+      padding: 2rem 2.5rem 2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-page {
+      display: none;
+      font-family: 'Inter', Courier, monospace;
+      font-size: 0.8rem;
+      color: #111;
+      line-height: 1.9;
+      text-align: justify;
+      animation: storyFade 0.25s ease;
+    }
+    .story-page.active { display: block; }
+    .story-page p + p { margin-top: 1.1em; }
+
+    .story-underline { text-decoration: underline; }
+
+    @keyframes storyFade {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== VIEW MORE BUTTON ===== */
+    .char-viewmore-btn {
+      background: none;
+      border: 1.5px solid var(--black);
+      font-family: 'Inter', Courier, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--black);
+      padding: 0.5rem 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .char-viewmore-btn:hover {
+      background: var(--black);
+      color: #fff;
+    }
+
+    /* ===== CHARACTER MODAL ===== */
+    .char-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .char-modal-overlay.open { display: flex; }
+
+    .char-modal-box {
+      background: #e8e3dc;
+      max-width: 820px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+    }
+
+    .char-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem 0.85rem 1.5rem;
+      border-bottom: 1px solid #c0bab2;
+      flex-shrink: 0;
+    }
+
+    .char-modal-title {
+      font-family: 'Inter', Courier, monospace;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.01em;
+      border: 2px solid var(--black);
+      padding: 0.2rem 0.6rem;
+    }
+
+    .char-modal-logo {
+      font-family: 'Inter', Courier, monospace;
+      font-size: 0.52rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1.3;
+      color: #fff;
+      background: var(--black);
+      padding: 0.3rem 0.45rem;
+      text-align: center;
+      user-select: none;
+    }
+
+    .char-modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--black);
+      line-height: 1;
+      padding: 0.2rem 0.3rem;
+      transition: opacity 0.15s;
+    }
+    .char-modal-close:hover { opacity: 0.5; }
+
+    .char-modal-body {
+      padding: 1.75rem 2rem;
+      overflow-y: auto;
+      font-family: 'Inter', Courier, monospace;
+      font-size: 0.75rem;
+      color: #111;
+      line-height: 1.85;
+      text-align: justify;
+    }
+    .char-modal-body p + p { margin-top: 0.9em; }
+
+    @media (max-width: 768px) {
+      .char-modal-box { max-height: 90vh; }
+      .char-modal-title { font-size: 1rem; }
+      .char-modal-body { padding: 1.25rem; font-size: 0.7rem; }
+    }
 
     /* ANIMATIONS */
     .reveal {
@@ -363,10 +500,27 @@
 
     .hamburger { display: none; }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
+      .magnify-wrapper { width: 100% !important; left: 0 !important; transform: none !important; }
       .project-header { grid-template-columns: 1fr; gap: 2rem; }
       .moodboard-grid { grid-template-columns: 1fr; }
+      .exploration-grid { grid-template-columns: 1fr; }
+      .project-hero { height: 40vh; }
+      .hero-description { font-size: 0.5rem; margin-top: 10rem; }
+
+      .story-terminal { grid-template-columns: 1fr; }
+      .story-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-right: none;
+        border-bottom: 1px solid #b0aaa2;
+        padding: 0.6rem 0.5rem;
+        gap: 0;
+      }
+      .story-deleted { display: none; }
+      .story-sidebar-spacer { display: none; }
+      .story-file { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+      .story-content { padding: 1.25rem 1.25rem; }
 
       .hamburger {
         display: flex;
@@ -389,7 +543,6 @@
       .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
       .hamburger.open span:nth-child(2) { opacity: 0; }
       .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
       .nav-links {
         display: none;
         flex-direction: column;
@@ -411,6 +564,7 @@
   <nav>
     <a href="index.html" class="nav-brand">PORTFOLIO</a>
     <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
       <li><a href="#moodboard">Moodboard</a></li>
       <li><a href="#exploration">Exploration</a></li>
       <li><a href="#character">Character</a></li>
@@ -427,10 +581,9 @@
 
   <div class="project-hero">
     <img src="Page 1/Z7vl90N6DGhtrpoZK6NrCKVtY.png.png" alt="OpenSea 2100 Banner" class="bg-banner">
-    
     <div class="hero-text-overlay reveal">
       <p class="hero-description">
-        A fictional world where unviable environments turn the remaining fish into humanity’s most 
+        A fictional world where unviable environments turn the remaining fish into humanity's most 
         precious resource. Special individuals (called Tidebreakers) sail toward the open sea in a relentless race and battle, with one clear objective: to catch fish.
       </p>
     </div>
@@ -439,7 +592,6 @@
   <main class="container">
     
     <div class="project-header reveal">
-      
       <ul class="info-list">
         <li class="info-item">
           <span class="info-label">Scope</span>
@@ -469,18 +621,14 @@
             Open Sea 2100 is inspired by real-world maritime disputes and the ongoing tension over international waters (The High Seas), Open Sea 2100 imagines a future where the rules that govern the sea no longer exist. Nations compete not for territory, but for survival where the open sea becomes the new battlefield.
           </p>
         </div>
-        
         <div class="synopsis-divider"></div>
-        
         <div class="synopsis-block">
           <h2 class="synopsis-title">Design Objective</h2>
           <p class="synopsis-text">
             To develop a complete and cohesive IP from the ground up, building a believable world with its own lore, rules, and visual identity. Every design decision, from characters to environments, is built to communicate the same universe consistently.
           </p>
         </div>
-
         <div class="synopsis-divider"></div>
-        
         <div class="synopsis-block">
           <h2 class="synopsis-title">Insight</h2>
           <p class="synopsis-text">
@@ -488,39 +636,122 @@
           </p>
         </div>
       </div>
-
     </div>
+
+    <!-- ===== STORY SECTION ===== -->
+    <section class="section-block reveal" id="story">
+      <h2 class="section-title">STORY</h2>
+      
+      <div class="story-terminal">
+        <!-- Sidebar -->
+        <div class="story-sidebar">
+          <button class="story-file active" data-file="1">
+            <span class="story-arrow">▶</span>File #01
+          </button>
+          <button class="story-file" data-file="2">
+            <span class="story-arrow">▶</span>File #02
+          </button>
+          <button class="story-file" data-file="3">
+            <span class="story-arrow">▶</span>File #03
+          </button>
+          <button class="story-file" data-file="4">
+            <span class="story-arrow">▶</span>File #04
+          </button>
+          <div class="story-file" style="cursor: default; pointer-events: none;">
+            <span class="story-arrow"></span>2100.mp3
+          </div>
+          <div class="story-file" style="cursor: default; pointer-events: none;">
+            <span class="story-arrow"></span>[DELETED<br>CONTENT]
+          </div>
+          <div class="story-sidebar-spacer"></div>
+        </div>
+
+        <!-- Content pane -->
+        <div class="story-content">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid #b8b3ac;">
+            <span style="font-family: 'Inter', Courier, monospace; font-size: 1.1rem; font-weight: 700; color: #111; border: 2px solid #111; padding: 0.2rem 0.6rem;">&lt;/Story&gt;</span>
+            <img src="Page 1/Salinan dari Concept Illustration (2).png" alt="OpenSea Logo" style="width: 100px; height: auto; object-fit: contain;">
+          </div>
+
+          <div class="story-page active" data-page="1">
+            <p>
+              The universe is set in the year 2100. Living conditions become extremely poor. This is
+              the moment nations realize there is not enough food for them, as areas around land are
+              polluted, successful crop harvests become far less expected, farm animals begin to die
+              due to extreme conditions, and nearby waters are filled with nothing but dangerous
+              substances.
+            </p>
+            <p>
+              Under the rules of the Exclusive Economic Zone, nations once held control over vast ocean
+              sectors, securing resources within their maritime boundaries up to 200 nautical miles, or
+              about 370 kilometers, from their coastlines. In this era, those zones stand unfunctional
+              and abandoned, leading all nations to contested open waters <span class="story-underline">(the high seas)</span>, where
+              survival and dominance are no longer guaranteed, and actions cannot be judged or
+              sanctioned by any nation's law.
+            </p>
+            <p>
+              However, not all ordinary fishermen can enter the open sea, because it is more than just
+              fishing. Imagine being on a small, poorly equipped boat during a conflict like when Japan
+              attacked Pearl Harbor in the Pacific War, yet you are only there to fish among them. It
+              is no longer an ocean, but a battlefield. You may say, "We are just here to catch some
+              fish," but it is a worthless effort. With international law dismissed and ignored as
+              conditions grow more extreme, everything becomes unpredictable for the sake of survival.
+            </p>
+          </div>
+
+          <div class="story-page" data-page="2">
+            <p>
+              For this reason, in 2100 nations are beginning to recruit special personnel divisions called Tidebreakers. Currently, the number of Tidebreakers is still not high, but it will gradually increase as resources become rarer. Tidebreakers can be anyone who holds a nationality, as long as they fulfill two important conditions. The first condition is fishing skillset. A Tidebreaker must understand methods on how to catch each kind of fish, from small to large, how specific species behave, and the previously studied ecological patterns of targeted creatures. There is a difference in handling a school of sardines and a march of giant ocean crustaceans. The second condition is the ability to fight. Since the open sea serves as a battlefield itself, a Tidebreaker must develop strategies and master their weapons and equipment in preparation for combat with threats from other nations’ Tidebreakers or even greater dangers. It is common among Tidebreakers to eliminate each other, as it is essential to reduce competition and secure more supplies for their own needs, much like pirates, but on battleships.
+            </p>
+            <p>
+              Talking about battleships, vessels play a huge role in each expedition. Ships help Tidebreakers reach designated locations faster, assist in harvesting and storing fish meat to bring back home, and serve as the last defensive barrier in the open sea. Therefore, developing and upgrading technologies should not be neglected, as it improves performance and provides advantages.
+            </p>
+          </div>
+
+          <div class="story-page" data-page="3">
+            <p>
+              The capability to travel far at a fast pace is very necessary, because Tidebreakers do not regularly stay in one area of the ocean or fish in the same spot throughout the year. The open sea is a unique living ecosystem that requires adaptability. Certain natural causes and species behaviors will turn specific zones into highly condensed and valuable fishing areas during certain periods of time. From the blooming season of jellyfish to the annual migration of apex predator orca whales, these events attract a significant number of Tidebreakers across the world.
+            </p>
+            <p>
+              The less expected things are more likely to happen, as nature suggests. The open sea will never fail to deliver a surprise among these already chaotic conditions. Due to the high concentration of contaminated objects and pollution affected environments, some creatures have developed unusual mutations. Mutations will alter a creature both biologically and physically. Some creatures become unusually gigantic, others develop extra teeth and limbs, and some once harmless creatures may adopt predatory behavior. In certain cases, several creature mutations possess far greater danger than others. These creatures are called Okarion, whose presence would be reported up to the last known sighting by any observers. It is stated that killing an Okarion is as difficult as punching a blue whale to death with bare fists. When encountering an Okarion, the most possible or not possible option is to flee, unless one knows its weak spots.
+            </p>
+          </div>
+
+          <div class="story-page" data-page="4">
+            <p>
+              As the tides continue to shift, Tidebreakers are turning into a symbol of ambition and national pride. People view them as heroes and a respected duty in this world, as they risk their lives and everything they have to serve their people. For this reason, younger generations begin to see them as role models. Kids mimic their movements and fighting styles, while media and stories continue to glorify the Tidebreakers. It has now become a part of everyday identity in the 22nd century...
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section-block reveal" id="moodboard">
       <h2 class="section-title">MOODBOARD</h2>
       <div class="moodboard-grid">
-        
         <div class="moodboard-item">
           <h3 class="moodboard-heading">Character</h3>
-            <img src="Page 1/Salinan dari Concept Illustration (18) 1.png" alt="Character Moodboard" class="project-img">
+          <img src="Page 1/Salinan dari Concept Illustration (18) 1.png" alt="Character Moodboard" class="project-img">
           <p class="moodboard-caption">Tactical - Prideful - Cultural</p>
         </div>
-
         <div class="moodboard-item">
           <h3 class="moodboard-heading">Technology & Environment</h3>
-            <img src="Page 1/Salinan dari Concept Illustration (19) 1.png" alt="Technology and Environment Moodboard" class="project-img">
+          <img src="Page 1/Salinan dari Concept Illustration (19) 1.png" alt="Technology and Environment Moodboard" class="project-img">
           <p class="moodboard-caption">Advanced - Adaptive - Mutation</p>
         </div>
-
         <div class="moodboard-item">
           <h3 class="moodboard-heading">Color and Mood</h3>
-            <img src="Page 1/Salinan dari Concept Illustration (20) 1.png" alt="Color and Mood Moodboard" class="project-img">
+          <img src="Page 1/Salinan dari Concept Illustration (20) 1.png" alt="Color and Mood Moodboard" class="project-img">
           <p class="moodboard-caption">Faded Tones - Soft Hues - Emphasizing</p>
         </div>
-
         <div class="moodboard-item">
           <h3 class="moodboard-heading">Artstyle</h3>
-            <img src="Page 1/Salinan dari Concept Illustration (21) 1.png" alt="Artstyle Moodboard" class="project-img">
+          <img src="Page 1/Salinan dari Concept Illustration (21) 1.png" alt="Artstyle Moodboard" class="project-img">
           <p class="moodboard-caption">Stylized - Dynamic - Explaining</p>
         </div>
-
       </div>
     </section>
+
     <section class="section-block reveal" id="exploration">
       <h2 class="section-title">EXPLORATION</h2>
       <div class="exploration-grid">
@@ -535,9 +766,42 @@
     <section class="section-block reveal" id="character">
       <h2 class="section-title">CHARACTER</h2>
       <div class="character-showcase">
-        <div style="position: relative; margin-bottom: 2rem;">
+        <div style="position: relative; margin-bottom: 1rem;">
           <img src="Page 1/Salinan dari Concept Illustration (2) → M1pYDlTTnWy7SAYVFyFzuKQv6M.png.png" alt="Character Sheet Lae" class="project-img">
           <img src="Page 1/Salinan dari Concept Illustration (14) → TBBF1MidS9MT0VFdCX1D3Ip3s8.png.png" alt="Character Detail" style="position: absolute; top: 58%; right: 2%; width: 50%; height: auto;">
+        </div>
+
+        <!-- View More Button -->
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 2rem;">
+          <button class="char-viewmore-btn" id="openModalBtn" onclick="openCharModal()" style="position: relative; z-index: 999;">
+            VIEW MORE ↗
+          </button>
+        </div>
+
+        <!-- CHARACTER MODAL -->
+        <div class="char-modal-overlay" id="charModal" onclick="closeCharModal(event)">
+          <div class="char-modal-box">
+            <!-- Header bar -->
+            <div class="char-modal-header">
+              <span class="char-modal-title">&lt;/Tidebreaker&gt;</span>
+              <div style="display:flex; align-items:center; gap: 0.75rem;">
+                <img src="Page 1/Salinan dari Concept Illustration (2).png" alt="OpenSea Logo" style="width: 100px; height: auto; object-fit: contain;">
+                <button class="char-modal-close" onclick="closeCharModal()">✕</button>
+              </div>
+            </div>
+            <!-- Body -->
+            <div class="char-modal-body">
+              <p>Hailing from the Kingdom of Bamboo, Lin Shuixi, better known as Shui, was raised in a small floating village along the coasts of Hainan in southern China. Since her village is located near the water, the majority of residents rely on fishing for their livelihood, including Shui.</p>
+              <p>Shui has always been an exceptional fisher and a master of her craft. However, unlike any other fisherman, Shui adopted a different technique than the whole village and perhaps the rest of the world. To this day, she continues to utilize cormorants to assist her fishing, a long-abandoned technique in traditional Chinese fishing, thanks to her mother who had taught her since she was a child. Moreover, she also began learning to fish with a simple tool, a rope and a hook, and managed to catch her first fish at the age of seven.</p>
+              <p>On Sundays, generally a rest day in China, Shui usually did not go fishing with her mother. Instead, her grandfather, who worked as a lion dance performer, would visit little Shui in the village. He would bring his equipment and costume and show her the graceful, dynamic movements of the dance, sparking her fascination with the art which would later become a defining part of her personality.</p>
+              <p>As she grew up, Shui continued mastering her fishing skills, gradually catching harder fish off the shore. She spent countless hours with her two cormorants, training, connecting, and building a deep bond with them, all while practicing the dynamic movements of lion dance.</p>
+              <p>However, one day, an unwanted tragedy occurred. Curious and intelligent by nature, Shui had been inspired by the massive industrial machines that crushed objects with ease. She wondered, "What if I implemented this into fishing?" She went to her workbench just outside her home, gathered materials from across the village, and created a drill with an advanced mechanism designed to pierce through larger fish more easily. The drill used kinetic energy as fuel, amplifying its power exponentially.</p>
+              <p>During the first test of her new tool, the drill launched back at her, slicing off her right hand. She fell directly to the ground, unconscious from massive blood loss, while the whole village reacted and did everything possible to save her.</p>
+              <p>Days passed, and Shui finally woke up. She realized she was still alive, lying in her bed at home, but her right arm had been replaced with a mechanical arm infused with the same kinetic energy. Her mother was right next to her bed, crying gracefully upon seeing her daughter alive. She told Shui that if not for the efforts of the entire village, her story might have ended differently.</p>
+              <p>From that day on, Shui realized she had something to return to her village. She went back to her workbench, gradually upgrading her equipment while her two cormorant friends watched from the side. She tried again to control and master her drill, more cautious than before, and perhaps with one less arm to worry about. Today, she has become one of the best fishers, capable of handling new challenges alongside her two cormorants bringing supplies for the people.</p>
+              <p>Thanks to her remarkable skills and performance, Shui often became the headline of the news. Her reputation grew until one day, during the large-scale Tidebreaker recruitment, she was personally appointed by the President of China to serve the nation and a larger population, taking her skills from her village to the open seas for the greater good.</p>
+            </div>
+          </div>
         </div>
         <img src="Page 1/Salinan dari Concept Illustration (5) → SDaNL6nYrmRy6L3raVDxAvla9xE.png.png" alt="Character Turnaround" class="project-img" style="margin-bottom: 2rem;">
         <div class="stacked-image-container">
@@ -566,21 +830,15 @@
       </div>
 
       <div style="margin: 0 auto 4rem auto; max-width: 900px; text-align: center;">
-        
         <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 1rem;">
-          
           <img src="Page 1/FAFSD → VZiLDeOeziPnpxtoX3RNixTEI.png.png" alt="Location Logo" style="width: 40px; height: auto;">
-          
           <h3 style="font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 700; margin: 0;">
             Hainan Fishing Village, China (2100)
           </h3>
-          
         </div>
-        
         <p style="font-size: 0.95rem; color: #444; line-height: 1.6; margin-bottom: 1rem;">
           Hainan Fishing Village is located in the southernmost part of China and is home to Shui and thousands of other people. The village remains a less developed area of the province, in contrast to its tall infrastructure and industrial zones. Pollution-producing machines have continued to increase year after year, without a single attempt to reduce their harmful effects on the environment until it may be too late.
         </p>
-        
         <p style="font-size: 0.95rem; color: #444; line-height: 1.6;">
           This is the current state of how poor living conditions have become in Hainan Fishing Village, a consequence that everyone must face. It stands as visible proof of how humans have neglected the balance between progress and nature.
         </p>
@@ -589,7 +847,7 @@
       <img src="Page 1/XqNeXqg8V724lKdN3fM2fiLjFSM.png.png" alt="Architecture and Props" class="project-img" style="margin-bottom: 2rem;">
       
       <h2 class="section-title" id="worldbuilding">WORLD BUILDING</h2>
-      <img src="Page 1/Salinan dari Concept Illustration (3) → OqVH18BXK7AV37bWPQe3oOYb8Y.png.png" alt="World Map" class="project-img" style="margin-bottom: 2rem; ">
+      <img src="Page 1/Salinan dari Concept Illustration (3) → OqVH18BXK7AV37bWPQe3oOYb8Y.png.png" alt="World Map" class="project-img" style="margin-bottom: 2rem;">
       <img src="Page 1/Salinan dari Concept Illustration (4) → S74pTqpLzfYpNFttVpOzOGxahTM.png.png" alt="Production Timeline" class="project-img">
     </section>
 
@@ -601,6 +859,25 @@
   </footer>
 
   <script>
+    // Character modal
+    function openCharModal() {
+      document.getElementById('charModal').classList.add('open');
+      document.getElementById('openModalBtn').style.visibility = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCharModal(e) {
+      if (!e || e.target === document.getElementById('charModal')) {
+        document.getElementById('charModal').classList.remove('open');
+        document.getElementById('openModalBtn').style.visibility = 'visible';
+        document.body.style.overflow = '';
+      }
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeCharModal();
+    });
+
+    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { 
@@ -612,37 +889,40 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => io.observe(el));
 
+    // Story tab switcher
+    document.querySelectorAll('.story-file').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Sidebar active state
+        document.querySelectorAll('.story-file').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Show matching page
+        const target = btn.dataset.file;
+        document.querySelectorAll('.story-page').forEach(page => {
+          page.classList.toggle('active', page.dataset.page === target);
+        });
+      });
+    });
+
+    // Magnifier
     function moveMagnifier(e) {
       const wrapper = e.currentTarget;
       const img = wrapper.querySelector('.magnify-image');
       const rect = wrapper.getBoundingClientRect();
-      
-      // Menghitung posisi koordinat mouse di dalam gambar
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      // Mengubah posisi ke dalam persentase
-      const xPercent = (x / rect.width) * 100;
-      const yPercent = (y / rect.height) * 100;
-      
-      // Menggeser titik fokus zoom gambar mengikuti persentase kursor
+      const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
+      const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
       img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
     }
-
     function resetMagnifier(e) {
       const img = e.currentTarget.querySelector('.magnify-image');
-      // Mengembalikan fokus gambar ke tengah (center) jika mouse keluar
-      setTimeout(() => {
-        img.style.transformOrigin = 'center center';
-      }, 100);
+      setTimeout(() => { img.style.transformOrigin = 'center center'; }, 100);
     }
-
-    const magnifyWrappers = document.querySelectorAll('.magnify-wrapper');
-    magnifyWrappers.forEach(wrapper => {
-      wrapper.addEventListener('mousemove', moveMagnifier);
-      wrapper.addEventListener('mouseleave', resetMagnifier);
+    document.querySelectorAll('.magnify-wrapper').forEach(w => {
+      w.addEventListener('mousemove', moveMagnifier);
+      w.addEventListener('mouseleave', resetMagnifier);
     });
 
+    // Hamburger
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.querySelector('.nav-links');
     hamburger.addEventListener('click', () => {

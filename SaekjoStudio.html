@@ -324,6 +324,22 @@
     .main-concept-grid { grid-template-columns: 1fr; gap: 2rem; }
     .moodboard-grid { grid-template-columns: 1fr; }
     .section-block { margin-top: 7rem; }
+    .animal-ref-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .animal-ref-grid img[alt="First Sketches"] {
+      margin-left: 0 !important;
+    }
+    
+    .animal-ref-inner {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+    .animal-arrow {
+      transform: rotate(90deg) !important;
+      margin-right: 0 !important;
+      margin-top: 0.5rem !important;
+    }
 
     div[style*="grid-template-columns: 1fr 1fr"][style*="gap: 3rem"] {
       grid-template-columns: 1fr !important;
@@ -631,10 +647,10 @@
     <img src="Page 2/Salinan dari FINAL Kevin Macario G AFL2 Illust (15) 1.png" alt="Sidekick Banner" style="width: 100vw; position: relative; left: 50%; transform: translateX(-50%); height: auto; display: block; margin-bottom: 2rem;">
 
     <!-- Animal Reference + First Sketches -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
-        <div style="display: flex; align-items: center; gap: 1rem;">
-        <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (16) 1.png" alt="Animal References" style="width: 100%; height: auto; display: block;">
-        <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (17) 2.png" alt="Arrow" style="width: 32px; height: auto; flex-shrink: 0; margin-right: 10rem;">
+    <div class="animal-ref-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+        <div class="animal-ref-inner" style="display: flex; align-items: center; gap: 1rem;">
+          <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (16) 1.png" alt="Animal References" style="width: 100%; height: auto; display: block;">
+          <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (17) 2.png" alt="Arrow" class="animal-arrow" style="width: 50px; height: auto; flex-shrink: 0; margin-right: 10rem;">
         </div>
         <img src="Page 2/Salinan dari Kevin Macario G AFL2 Illust (15) 1.png" alt="First Sketches" style="width: 100%; height: auto; display: block; margin-left: 2rem;">
     </div>
