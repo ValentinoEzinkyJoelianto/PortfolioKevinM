@@ -896,7 +896,7 @@
                 cursor: pointer;
                 z-index: 2;
                 filter: brightness(1);"
-         onmouseover="this.style.transform='translate(-50%, -100%) scale(1.1)'"
+         onmouseover="this.style.transform='translate(-50%, -60%) scale(1.1)'"
          onmouseout="resetHover(1)"
          onclick="selectChar(1)">
 
@@ -912,8 +912,8 @@
                 transition: transform 0.3s ease, filter 0.3s ease;
                 cursor: pointer;
                 z-index: 2;
-                filter: brightness(0.4);"
-         onmouseover="this.style.transform='translate(-50%, -100%) scale(1.1)'"
+                filter: brightness(0.6) grayscale(0.2)"
+         onmouseover="this.style.transform='translate(-50%, -60%) scale(1.1)'"
          onmouseout="resetHover(2)"
          onclick="selectChar(2)">
   </div>
@@ -1050,7 +1050,7 @@
         { num: '04', text: 'Diamond I in EPISODE 9: ACT III, Valorant' },
       ],
       charImg: 'NEW PORTFOLIO B5 KEVIN (8).png',
-      arrowLeft: '70%', arrowTop: '90%'
+      arrowLeft: '69%', arrowTop: '90%'
     }
   };
 
@@ -1079,8 +1079,8 @@
     }, 300);
 
     // Update highlight karakter
-    document.getElementById('char-select-1').style.filter = id === 1 ? 'brightness(1) grayscale(0)' : 'brightness(0.4) grayscale(1)';
-    document.getElementById('char-select-2').style.filter = id === 2 ? 'brightness(1) grayscale(0)' : 'brightness(0.4) grayscale(1)';
+    document.getElementById('char-select-1').style.filter = id === 1 ? 'brightness(1) grayscale(0)' : 'brightness(0.6) grayscale(0.2)';
+    document.getElementById('char-select-2').style.filter = id === 2 ? 'brightness(1) grayscale(0)' : 'brightness(0.6) grayscale(0.2)';
 
     // Pindahkan anak panah
     const arrow = document.getElementById('char-arrow');
