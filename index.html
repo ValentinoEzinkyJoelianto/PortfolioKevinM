@@ -732,6 +732,13 @@
     .section-about .about-left div[style*="height: 5px"] {
       width: 60% !important;
     }
+    #char-arrow {
+      display: none !important;
+      visibility: hidden !important;
+    }
+    .hide-mobile {
+      display: none !important;
+    }
   }
 </style>
 </head>
@@ -837,71 +844,78 @@
 <!-- ABOUT -->
 <section class="section-about reveal" id="about">
   <div class="about-left">
-  <!-- Pensil logo -->
     <img src="NEW PORTFOLIO B5 KEVIN (4).png" alt="Pencil Logo" style="width: 40px; height: auto; display: block; margin-bottom: 0.75rem;">
     
-    <!-- Software label + garis -->
-    <div class="achievements-title" style="margin-bottom: 0.5rem;">SOFTWARES</div>
+    <div class="achievements-title" id="about-software-label" style="margin-bottom: 0.5rem;">SOFTWARES</div>
     <div style="height: 5px; width: 28%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1.5rem;"></div>
-
-    <!-- Softwares image -->
-    <img src="NEW PORTFOLIO B5 KEVIN.png" alt="Softwares" style="width: 30%; height: auto; display: block; margin-bottom: 2rem;">
+    <img id="about-software-img" src="NEW PORTFOLIO B5 KEVIN.png" alt="Softwares" style="width: 30%; height: auto; display: block; margin-bottom: 2rem;">
     
-    <!-- Achievements label + garis -->
-    <div class="achievements-title" style="margin-bottom: 0.5rem;">ACHIEVEMENTS</div>
+    <div class="achievements-title" id="about-achieve-label" style="margin-bottom: 0.5rem;">ACHIEVEMENTS</div>
     <div style="height: 5px; width: 36%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1rem;"></div>
 
-    <div class="achievement-item">
-      <span class="achievement-num">01</span>
-      <span class="achievement-text">Best Presenter at International Conference on Entrepreneurship (ICOEN) XII, 2025</span>
-    </div>
-    <div class="achievement-item">
-      <span class="achievement-num">02</span>
-      <span class="achievement-text">2nd Prize Winner — Dislyte Summer Bash Fanart Contest</span>
-    </div>
-    <div class="achievement-item">
-      <span class="achievement-num">03</span>
-      <span class="achievement-text">Runner-up — Andalas Fanart Contest</span>
+    <div id="about-achievements">
+      <div class="achievement-item"><span class="achievement-num">01</span><span class="achievement-text">Best Presenter at International Conference on Entrepreneurship (ICOEN) XII, 2025</span></div>
+      <div class="achievement-item"><span class="achievement-num">02</span><span class="achievement-text">2nd Prize Winner — Dislyte Summer Bash Fanart Contest</span></div>
+      <div class="achievement-item"><span class="achievement-num">03</span><span class="achievement-text">Runner-up — Andalas Fanart Contest</span></div>
     </div>
   </div>
 
   <!-- Center: Kevin image -->
   <div style="position: relative; display: flex; align-items: center; justify-content: center; transform: translateY(3rem);">
-    <img src="NEW PORTFOLIO B5 KEVIN (2).png" alt="Kevin Macario Gunawan" style="width: 500px; height: auto; display: block;">
-    <img src="NEW PORTFOLIO B5 KEVIN (5).png" alt="Anak Panah" style="position: absolute; top: 90%; left: 52%; transform: translate(-50%, -50%); width: 10%; height: auto;">
+    <img id="about-char-img" src="NEW PORTFOLIO B5 KEVIN (2).png" alt="Kevin Macario Gunawan" style="width: 500px; height: auto; display: block; transition: opacity 0.3s;">
+    <img id="char-arrow" class="hide-mobile" src="NEW PORTFOLIO B5 KEVIN (5).png" alt="Anak Panah" style="position: absolute; top: 90%; left: 52%; transform: translate(-50%, -50%); width: 10%; height: auto; transition: left 0.4s ease, top 0.4s ease;">
   </div>
 
-  <!-- Right: Name + Bio + Lock In -->
+  <!-- Right -->
   <div class="about-right" style="display: flex; flex-direction: column; justify-content: center;">
-    <h2 style="font-family: 'Roboto Condensed', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.05em; color: var(--blue); margin-bottom: 0.25rem;">KEVIN MACARIO GUNAWAN</h2>
-    <p style="font-family: 'Inter', serif; font-style: italic; font-size: 1rem; color: var(--muted); margin-bottom: 2rem; letter-spacing: 0.05em;">Visual Artist & Concept Designer</p>
-    <p class="about-body">Coming from his hometown in Surabaya, Kevin is a Visual Communication Design student at Universitas Ciputra Surabaya with a passion for building worlds, characters, and ideas from scratch. He has worked on several design projects, always making sure his works are not just visually distinct, but also able to present and communicate clearly to the audience. His design works are inspired by the things we encounter in every day life to the rich visual worlds of video games that have shaped his creative perspective.</p>
+    <h2 id="about-name" style="font-family: 'Roboto Condensed', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: 0.05em; color: var(--blue); margin-bottom: 0.25rem;">KEVIN MACARIO GUNAWAN</h2>
+    <p id="about-subtitle" style="font-family: 'Inter', serif; font-style: italic; font-size: 1rem; color: var(--muted); margin-bottom: 2rem; letter-spacing: 0.05em;">Visual Artist & Concept Designer</p>
+    <p id="about-bio" class="about-body">Coming from his hometown in Surabaya, Kevin is a Visual Communication Design student at Universitas Ciputra Surabaya with a passion for building worlds, characters, and ideas from scratch. He has worked on several design projects, always making sure his works are not just visually distinct, but also able to present and communicate clearly to the audience. His design works are inspired by the things we encounter in every day life to the rich visual worlds of video games that have shaped his creative perspective.</p>
     
-    <!-- Lock In button -->
     <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
       <button id="lockInBtn" onclick="lockIn()" style="background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: white; border: none; padding: 0.5rem 1.5rem; font-family: 'Roboto Condensed', sans-serif; font-size: 1rem; letter-spacing: 0.2em; cursor: pointer; border-radius: 2px; transition: opacity 0.3s;">LOCK IN</button>
     </div>
   </div>
 </section>
 
+<!-- CHARACTER SELECT -->
 <section class="reveal" style="padding: 0 clamp(1.5rem, 5vw, 4rem) 2rem; position: relative;">
   <div style="position: relative; width: 100%; overflow: show;">
-    
     <img src="NEW PORTFOLIO B5 KEVIN (1).png" alt="Character Select" style="width: 100%; height: auto; display: block;">
 
-    <img src="NEW PORTFOLIO B5 KEVIN (7).png" alt="Character Focus" 
-         style="position: relative; 
-                top: 50%; 
-                left: 50%; 
-                transform: translate(-50%, -103%) scale(1);
-                width: 7.75%; 
-                height: auto; 
-                transition: transform 0.4s ease-out; 
-                cursor: pointer; 
-                z-index: 2;"
-         onmouseover="this.style.transform='translate(-50%, -120%) scale(1.1)'" 
-         onmouseout="this.style.transform='translate(-50%, -103%) scale(1)'">
-         
+    <!-- Karakter 1 -->
+    <img src="NEW PORTFOLIO B5 KEVIN (7).png" alt="Character 1"
+         id="char-select-1"
+         style="position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(1);
+                width: 15%;
+                height: auto;
+                transition: transform 0.3s ease, filter 0.3s ease;
+                cursor: pointer;
+                z-index: 2;
+                filter: brightness(1);"
+         onmouseover="this.style.transform='translate(-50%, -100%) scale(1.1)'"
+         onmouseout="resetHover(1)"
+         onclick="selectChar(1)">
+
+    <!-- Karakter 2 -->
+    <img src="NEW PORTFOLIO B5 KEVIN (6).png" alt="Character 2"
+         id="char-select-2"
+         style="position: absolute;
+                top: 50%;
+                left: 56%;
+                transform: translate(-50%, -52%) scale(1);
+                width: 10%;
+                height: auto;
+                transition: transform 0.3s ease, filter 0.3s ease;
+                cursor: pointer;
+                z-index: 2;
+                filter: brightness(0.4);"
+         onmouseover="this.style.transform='translate(-50%, -100%) scale(1.1)'"
+         onmouseout="resetHover(2)"
+         onclick="selectChar(2)">
   </div>
 </section>
 
@@ -993,19 +1007,94 @@
       section.style.filter = 'brightness(1)';
       btn.style.transform = 'scale(1)';
       section.style.filter = 'hue-rotate(20deg)';
-      setTimeout(() => {
-        section.style.filter = 'none';
-      }, 150);
+      setTimeout(() => { section.style.filter = 'none'; }, 150);
     }, 100);
   }
 
   var deviceWidth = screen.width;
   if (deviceWidth < 1200) {
     var scale = deviceWidth / 1200;
-    document.querySelector('meta[name="viewport"]').setAttribute(
-      'content', 
-      'width=1200, initial-scale=' + scale
-    );
+    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=1200, initial-scale=' + scale);
+  }
+  if (screen.width <= 768) {
+    document.getElementById('char-arrow').style.display = 'none';
+  }
+  
+  const characters = {
+    1: {
+      name: 'KEVIN MACARIO GUNAWAN',
+      subtitle: 'Visual Artist & Concept Designer',
+      bio: 'Coming from his hometown in Surabaya, Kevin is a Visual Communication Design student at Universitas Ciputra Surabaya with a passion for building worlds, characters, and ideas from scratch. He has worked on several design projects, always making sure his works are not just visually distinct, but also able to present and communicate clearly to the audience. His design works are inspired by the things we encounter in every day life to the rich visual worlds of video games that have shaped his creative perspective.',
+      softwareLabel: 'SOFTWARES',
+      softwareImg: 'NEW PORTFOLIO B5 KEVIN.png',
+      achieveLabel: 'ACHIEVEMENTS',
+      achievements: [
+        { num: '01', text: 'Best Presenter at International Conference on Entrepreneurship (ICOEN) XII, 2025' },
+        { num: '02', text: '2nd Prize Winner — Dislyte Summer Bash Fanart Contest' },
+        { num: '03', text: 'Runner-up — Andalas Fanart Contest' },
+      ],
+      charImg: 'NEW PORTFOLIO B5 KEVIN (2).png',
+      arrowLeft: '52%', arrowTop: '90%'
+    },
+    2: {
+      name: 'KEVIN MACARIO GUNAWAN',
+      subtitle: 'Gaming Strategist & Enthusiast',
+      bio: 'Born as a competitive gamer, Kevin constantly develops his strategy and gamesense to master FPS and strategy video games. As a high-ranked player, he dominates the lobby every time he enters the battlefield, slashing down obstacles to lead his team to victory with ease. Yet, beyond the competitive fire, Kevin is a dedicated friend who values Saturday night hangouts and creating the best moments together playing video games together.',
+      softwareLabel: 'GAMES',
+      softwareImg: 'NEW PORTFOLIO B5 KEVIN (9).png',
+      achieveLabel: 'RANK',
+      achievements: [
+        { num: '01', text: 'Celestial III Magneto in S1.5 Eternal Night Falls, Marvel Rivals' },
+        { num: '02', text: 'Mythical Immortal *111 in Mobile Legends' },
+        { num: '03', text: 'Diamond V Tank in Overwatch' },
+        { num: '04', text: 'Diamond I in EPISODE 9: ACT III, Valorant' },
+      ],
+      charImg: 'NEW PORTFOLIO B5 KEVIN (8).png',
+      arrowLeft: '70%', arrowTop: '90%'
+    }
+  };
+
+  let activeChar = 1;
+
+  function selectChar(id) {
+    if (activeChar === id) return;
+    activeChar = id;
+    const data = characters[id];
+
+    // Fade out lalu update konten
+    const charImg = document.getElementById('about-char-img');
+    charImg.style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('about-name').textContent = data.name;
+      document.getElementById('about-subtitle').textContent = data.subtitle;
+      document.getElementById('about-bio').textContent = data.bio;
+      document.getElementById('about-software-label').textContent = data.softwareLabel;
+      document.getElementById('about-software-img').src = data.softwareImg;
+      document.getElementById('about-achieve-label').textContent = data.achieveLabel;
+      document.getElementById('about-achievements').innerHTML = data.achievements.map(a =>
+        `<div class="achievement-item"><span class="achievement-num">${a.num}</span><span class="achievement-text">${a.text}</span></div>`
+      ).join('');
+      charImg.src = data.charImg;
+      charImg.style.opacity = '1';
+    }, 300);
+
+    // Update highlight karakter
+    document.getElementById('char-select-1').style.filter = id === 1 ? 'brightness(1) grayscale(0)' : 'brightness(0.4) grayscale(1)';
+    document.getElementById('char-select-2').style.filter = id === 2 ? 'brightness(1) grayscale(0)' : 'brightness(0.4) grayscale(1)';
+
+    // Pindahkan anak panah
+    const arrow = document.getElementById('char-arrow');
+    arrow.style.left = data.arrowLeft;
+    arrow.style.top  = data.arrowTop;
+  }
+
+  const charDefaults = {
+    1: 'translate(-50%, -50%) scale(1)',
+    2: 'translate(-50%, -52%) scale(1)'
+  };
+
+  function resetHover(id) {
+    document.getElementById('char-select-' + id).style.transform = charDefaults[id];
   }
 </script>
 </body>
