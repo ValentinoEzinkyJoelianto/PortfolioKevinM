@@ -844,7 +844,7 @@
 <!-- ABOUT -->
 <section class="section-about reveal" id="about">
   <div class="about-left">
-    <img src="NEW PORTFOLIO B5 KEVIN (4).png" alt="Pencil Logo" style="width: 40px; height: auto; display: block; margin-bottom: 0.75rem;">
+    <img id="about-icon-img" src="NEW PORTFOLIO B5 KEVIN (4).png" alt="Pencil Logo" style="width: 40px; height: auto; display: block; margin-bottom: 0.75rem;">
     
     <div class="achievements-title" id="about-software-label" style="margin-bottom: 0.5rem;">SOFTWARES</div>
     <div style="height: 5px; width: 28%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); margin-bottom: 1.5rem;"></div>
@@ -1024,6 +1024,8 @@
     1: {
       name: 'KEVIN MACARIO GUNAWAN',
       subtitle: 'Visual Artist & Concept Designer',
+      iconImg: 'NEW PORTFOLIO B5 KEVIN (4).png',
+      iconWidth: '40px',
       bio: 'Coming from his hometown in Surabaya, Kevin is a Visual Communication Design student at Universitas Ciputra Surabaya with a passion for building worlds, characters, and ideas from scratch. He has worked on several design projects, always making sure his works are not just visually distinct, but also able to present and communicate clearly to the audience. His design works are inspired by the things we encounter in every day life to the rich visual worlds of video games that have shaped his creative perspective.',
       softwareLabel: 'SOFTWARES',
       softwareImg: 'NEW PORTFOLIO B5 KEVIN.png',
@@ -1039,6 +1041,8 @@
     2: {
       name: 'KEVIN MACARIO GUNAWAN',
       subtitle: 'Gaming Strategist & Enthusiast',
+      iconImg: 'NEW PORTFOLIO B5 KEVIN (10).png',
+      iconWidth: '60px',
       bio: 'Born as a competitive gamer, Kevin constantly develops his strategy and gamesense to master FPS and strategy video games. As a high-ranked player, he dominates the lobby every time he enters the battlefield, slashing down obstacles to lead his team to victory with ease. Yet, beyond the competitive fire, Kevin is a dedicated friend who values Saturday night hangouts and creating the best moments together playing video games together.',
       softwareLabel: 'GAMES',
       softwareImg: 'NEW PORTFOLIO B5 KEVIN (9).png',
@@ -1076,6 +1080,8 @@
       ).join('');
       charImg.src = data.charImg;
       charImg.style.opacity = '1';
+      document.getElementById('about-icon-img').src = data.iconImg;
+      document.getElementById('about-icon-img').style.width = data.iconWidth;
     }, 300);
 
     // Update highlight karakter
