@@ -890,10 +890,10 @@
     <img src="NEW PORTFOLIO B5 KEVIN (7).png" alt="Character 1"
          id="char-select-1"
          style="position: absolute;
-                top: 50%;
+                top: 48%;
                 left: 50%;
                 transform: translate(-50%, -50%) scale(1);
-                width: 15%;
+                width: 9.1%;
                 height: auto;
                 transition: transform 0.3s ease, filter 0.3s ease;
                 cursor: pointer;
@@ -1030,6 +1030,27 @@
   }
   if (screen.width <= 768) {
     document.getElementById('char-arrow').style.display = 'none';
+    
+    // Fix contact links di HP
+    const contactLinks = document.querySelector('.contact-links');
+    if (contactLinks) {
+      contactLinks.style.flexDirection = 'column';
+      contactLinks.style.alignItems = 'flex-start';
+      contactLinks.style.gap = '1.5rem';
+    }
+    
+    document.querySelectorAll('.contact-item').forEach(item => {
+      item.style.width = '100%';
+    });
+
+    document.querySelectorAll('.contact-text').forEach(el => {
+      el.style.fontSize = '1.4rem';
+    });
+
+    document.querySelectorAll('.contact-icon').forEach(el => {
+      el.style.width = '55px';
+      el.style.height = '55px';
+    });
   }
   
   const characters = {
