@@ -833,7 +833,7 @@
         <!-- Card 2: Portfolio Book -->
         <a class="proj-card-sm" id="illust-card-2" href="PortfolioBook.html" style="text-decoration: none; display: none;">
           <div class="proj-placeholder">
-            <img src="Page 7/Port Web 3 1.png" alt="Portfolio Book">
+            <img src="Page 7/NEW PORTFOLIO B5 KEVIN (4) 1.png" alt="Portfolio Book">
           </div>
           <div class="proj-overlay">
             <div class="proj-overlay-title">Portfolio Illustration & Concept</div>
@@ -1165,32 +1165,32 @@
     { id: 'illust-card-2', label: 'PORTFOLIO BOOK' }
   ];
   let illustIndex = 0;
+  let illustTimer = null;
 
   function slideIllust(dir) {
     const current = document.getElementById(illustCards[illustIndex].id);
-    
-    // Fade out dulu
     current.style.transition = 'opacity 0.3s ease';
     current.style.opacity = '0';
-    
     setTimeout(() => {
       current.style.display = 'none';
       current.style.opacity = '1';
-      
       illustIndex = (illustIndex + dir + illustCards.length) % illustCards.length;
-      
       const next = document.getElementById(illustCards[illustIndex].id);
       next.style.opacity = '0';
       next.style.display = 'flex';
       next.style.transition = 'opacity 0.3s ease';
-      
-      // Force reflow
       next.offsetHeight;
       next.style.opacity = '1';
-      
       document.getElementById('illust-label').textContent = illustCards[illustIndex].label;
     }, 300);
+
+    // Reset timer setiap kali manual diklik
+    clearInterval(illustTimer);
+    illustTimer = setInterval(() => slideIllust(1), 5000);
   }
+
+  // Start auto-slide
+  illustTimer = setInterval(() => slideIllust(1), 5000);
 </script>
 </body>
 </html>
