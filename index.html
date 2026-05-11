@@ -9,6 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .cat-col .cat-header {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
   
   :root {
     --black: #0a0a0a;
@@ -449,6 +456,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     padding: 0 clamp(1.5rem, 5vw, 4rem);
+    align-items: end;
   }
 
   .cat-col .cat-header { padding: 0; }
@@ -802,16 +810,33 @@
       <!-- ILLUSTRATION -->
       <div class="cat-col">
         <div class="cat-header">
-          <span class="cat-label">ILLUSTRATION</span>
+          <span class="cat-label" id="illust-label">ILLUSTRATION</span>
           <div class="cat-line"></div>
+          <div class="cat-nav">
+            <button class="cat-btn" onclick="slideIllust(-1)" aria-label="prev"><svg viewBox="0 0 12 12"><polyline points="8,1 3,6 8,11"/></svg></button>
+            <button class="cat-btn" onclick="slideIllust(1)" aria-label="next"><svg viewBox="0 0 12 12"><polyline points="4,1 9,6 4,11"/></svg></button>
+          </div>
         </div>
-        <a class="proj-card-sm" href="Illustration.html" style="text-decoration: none;">
+
+        <!-- Card 1: Illustration -->
+        <a class="proj-card-sm" id="illust-card-1" href="Illustration.html" style="text-decoration: none;">
           <div class="proj-placeholder">
-            <img src="Page 5/etbrnrn 1.png" alt="Classroom with Superpowers">
-            <span>Illustration</span>
+            <img src="Page 5/etbrnrn 1.png" alt="Illustration">
           </div>
           <div class="proj-overlay">
             <div class="proj-overlay-title">Illustration</div>
+            <div class="proj-overlay-sub">View all works →</div>
+          </div>
+          <div class="card-arrow"><svg viewBox="0 0 12 12"><polyline points="4,1 9,6 4,11"/></svg></div>
+        </a>
+
+        <!-- Card 2: Portfolio Book -->
+        <a class="proj-card-sm" id="illust-card-2" href="PortfolioBook.html" style="text-decoration: none; display: none;">
+          <div class="proj-placeholder">
+            <img src="Page 7/Port Web 3 1.png" alt="Portfolio Book">
+          </div>
+          <div class="proj-overlay">
+            <div class="proj-overlay-title">Portfolio Illustration & Concept</div>
             <div class="proj-overlay-sub">View all works →</div>
           </div>
           <div class="card-arrow"><svg viewBox="0 0 12 12"><polyline points="4,1 9,6 4,11"/></svg></div>
@@ -827,7 +852,6 @@
         <a class="proj-card-sm" href="GameDesign.html" style="text-decoration: none;">
           <div class="proj-placeholder">
             <img src="Page 6/Salinan dari Classroom with Superpowers 1 (1) 2.png" alt="Classroom with Superpowers">
-            <span>Game Design</span>
           </div>
           <div class="proj-overlay">
             <div class="proj-overlay-title">Game Design</div>
@@ -1134,6 +1158,38 @@
 
   function resetHover(id) {
     document.getElementById('char-select-' + id).style.transform = charDefaults[id];
+  }
+
+  const illustCards = [
+    { id: 'illust-card-1', label: 'ILLUSTRATION' },
+    { id: 'illust-card-2', label: 'PORTFOLIO BOOK' }
+  ];
+  let illustIndex = 0;
+
+  function slideIllust(dir) {
+    const current = document.getElementById(illustCards[illustIndex].id);
+    
+    // Fade out dulu
+    current.style.transition = 'opacity 0.3s ease';
+    current.style.opacity = '0';
+    
+    setTimeout(() => {
+      current.style.display = 'none';
+      current.style.opacity = '1';
+      
+      illustIndex = (illustIndex + dir + illustCards.length) % illustCards.length;
+      
+      const next = document.getElementById(illustCards[illustIndex].id);
+      next.style.opacity = '0';
+      next.style.display = 'flex';
+      next.style.transition = 'opacity 0.3s ease';
+      
+      // Force reflow
+      next.offsetHeight;
+      next.style.opacity = '1';
+      
+      document.getElementById('illust-label').textContent = illustCards[illustIndex].label;
+    }, 300);
   }
 </script>
 </body>
