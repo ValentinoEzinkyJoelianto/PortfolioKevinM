@@ -1165,7 +1165,6 @@
     { id: 'illust-card-2', label: 'PORTFOLIO BOOK' }
   ];
   let illustIndex = 0;
-  let illustTimer = null;
 
   function slideIllust(dir) {
     const current = document.getElementById(illustCards[illustIndex].id);
@@ -1183,14 +1182,8 @@
       next.style.opacity = '1';
       document.getElementById('illust-label').textContent = illustCards[illustIndex].label;
     }, 300);
-
-    // Reset timer setiap kali manual diklik
-    clearInterval(illustTimer);
-    illustTimer = setInterval(() => slideIllust(1), 5000);
   }
 
-  // Start auto-slide
-  illustTimer = setInterval(() => slideIllust(1), 5000);
 </script>
 </body>
 </html>
