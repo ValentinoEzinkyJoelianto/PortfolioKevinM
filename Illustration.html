@@ -165,10 +165,11 @@
     }
     .illust-caption {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: flex-start;
       gap: 2rem;
       margin-top: 1rem;
+      text-align: center;
     }
     .illust-caption-right {
       display: flex;
@@ -279,6 +280,9 @@
       <li><a href="#winter-hokkaido">Winter Hokkaido</a></li>
       <li><a href="#yadnya-kasada">Yadnya Kasada</a></li>
       <li><a href="#valorant">Fanarts</a></li>
+      <li><a href="#opensea">OpenSea</a></li>
+      <li><a href="#saekjo">Saekjo</a></li>
+      <li><a href="#portfolio-concept">Portfolio</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="menu">
       <span></span><span></span><span></span>
@@ -460,9 +464,76 @@
           </div>
         </div>
       </div>
-      </div>
     </div>
 
+      <!-- 8. OPENSEA 2100 -->
+      <div class="illust-piece reveal" id="opensea">
+        <img src="Page 1/OPen sea 1.gif" alt="OpenSea GIF" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+        <div style="overflow: hidden; width: 100%; margin-bottom: 1rem; position: relative; cursor: zoom-in;" onmousemove="moveMagnifier(event)" onmouseleave="resetMagnifier(event)">
+          <img src="Page 1/World Building Scenery 1 → upioCEpwbsdd0CUYqUw2ow0U.png.png" alt="Environment Concept" style="width: 100%; height: auto; display: block; transition: transform 0.1s ease-out; transform-origin: center center;" class="magnify-image-illust">
+        </div>
+        <img src="Page 1/Finished Artwork OPne sea 2100 1.png" alt="Finished Artwork OpenSea 2100" class="project-img" style="margin-bottom: 2rem;">
+        <video id="illust-opensea-video" loop muted playsinline style="width: 100%; height: auto; display: block; margin-bottom: 2rem;">
+          <source src="Page 1/Open SEA 6 SECOND.mp4" type="video/mp4">
+        </video>
+        <div class="illust-caption">
+          <div>
+            <p class="illust-title">OPENSEA 2100</p>
+            <p class="illust-desc">A fictional world where unviable environments turn the remaining fish into humanity's most 
+            precious resource. Special individuals (called Tidebreakers) sail toward the open sea in a relentless race and battle, with one clear objective: to catch fish.
+            </p>
+          </div>
+          <div class="illust-caption-right">
+            <div class="software-logos">
+              <img src="clipstudio.jpg" alt="Clip Studio Paint">
+              <img src="photoshop.jpg" alt="Adobe Photoshop">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. SAEKJO STUDIO -->
+      <div class="illust-piece reveal" id="saekjo">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <img src="Page 2/Saekjo 1.gif" alt="Saekjo GIF" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+          <img src="Page 2/fwfwfwf 1.png" alt="Introduction Poster" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+          <img src="Page 2/Saekjo Gif.gif" alt="Character Animation" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+        </div>
+        <div class="illust-caption">
+          <div>
+            <p class="illust-title">SAEKJO STUDIO</p>
+            <p class="illust-desc">A set of four characters and a sidekick mascot, each designed to represent a Korean personal color season (Spring, Summer, Autumn, Winter), giving Saekjo Studio — the first Korean Personal Color Studio in Surabaya — a distinct face for every palette.</p>
+          </div>
+          <div class="illust-caption-right">
+            <div class="software-logos">
+              <img src="clipstudio.jpg" alt="Clip Studio Paint">
+              <img src="photoshop.jpg" alt="Adobe Photoshop">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. PORTFOLIO BOOK -->
+      <div class="illust-piece reveal" id="portfolio-concept">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <img src="Page 7/Portfolio 1.gif" alt="Portfolio Animation 1" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+          <img src="Page 7/Port Web 3 1.png" alt="Portfolio Web" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+          <img src="Page 7/Portfolio 2.gif" alt="Portfolio Animation 2" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+          <img src="Page 7/NEW PORTFOLIO B5 KEVIN (4) 1.png" alt="Portfolio Cover" class="project-img" loading="lazy" style="margin-bottom: 1rem;">
+          <img src="Page 7/Rename Portfolio 3.gif" alt="Website GIF" class="project-img" loading="lazy">
+        </div>
+        <div class="illust-caption">
+          <div>
+            <p class="illust-title">PORTFOLIO BOOK</p>
+            <p class="illust-desc">The portfolio takes the theme of a game shop, a place where every project acts as a title waiting to be picked up and played. Because a portfolio should feel like somewhere you actually want to spend time and have a great experience. Meanwhile, Laura is always at the counter, happy to show you around and find something worth your while.</p>
+          </div>
+          <div class="illust-caption-right">
+            <div class="software-logos">
+              <img src="clipstudio.jpg" alt="Clip Studio Paint">
+            </div>
+          </div>
+        </div>
+      </div>
   </main>
 
   <footer>
@@ -524,6 +595,31 @@
       });
     }, { threshold: 0.2 });
     document.querySelectorAll('img[data-src]').forEach(gif => gifObserver.observe(gif));
+
+    const illustVideoEl = document.getElementById('illust-opensea-video');
+    if (illustVideoEl) {
+      const illustVideoObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.play(); } else { e.target.pause(); }
+        });
+      }, { threshold: 0.3 });
+      illustVideoObs.observe(illustVideoEl);
+    }
+
+    document.querySelectorAll('.magnify-image-illust').forEach(img => {
+      const wrapper = img.parentElement;
+      wrapper.addEventListener('mousemove', (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = 'scale(1.5)';
+      });
+      wrapper.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+        img.style.transformOrigin = 'center center';
+      });
+    });
   </script>
 </body>
 </html>
